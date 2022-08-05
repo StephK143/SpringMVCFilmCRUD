@@ -1,4 +1,4 @@
-package com.skilldistillery.film.entities;
+package com.skilldistillery.film.test.entities;
 
 import static org.junit.jupiter.api.Assertions.*;
 
