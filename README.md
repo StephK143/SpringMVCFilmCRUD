@@ -1,7 +1,12 @@
 # SpringMVCFilmCRUD
 
 
-##### By: Jamie Patterson, Wyatt Connell, Steph Karlsen
+#### TEAM:
+ Jamie Patterson
+ 
+ Wyatt Connell 
+ 
+ Steph Karlsen
 
 # Skill Distillery - Week 8: MVC Film Site
 
