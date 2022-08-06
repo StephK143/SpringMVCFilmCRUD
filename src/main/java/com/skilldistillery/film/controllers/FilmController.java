@@ -32,6 +32,12 @@ public class FilmController {
 		model.addAttribute("film", fd.createFilm(film));
 		return "result"; // placeholder page until we write .jsp
 	}
+	
+	@RequestMapping(path = "UpdateFilm.do", method = RequestMethod.POST)
+	public String updateFilm(Film film, Model model) {
+		model.addAttribute("filmEdit", fd.updateFilm(film));
+		return "result"; // placeholder page until we write .jsp
+	}
 
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "filmId")
 	public String getFilmById(@RequestParam("filmId") int filmId, Model model) {
