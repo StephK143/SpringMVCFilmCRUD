@@ -12,7 +12,7 @@
  
  <mvc:annotation-driven/>
  
- <bean id="dao" class="com.skilldistillery.film.database.FilmDAOImpl.java"/>
+ <bean id="dao" class="com.skilldistillery.film.database.FilmDAOImpl"/>
  <!--
  The above bean creates a temporary spot in memory to hold the new states- it will not actually add them to the database.
  Use this DAO implementation to actually connect the site to a database and make live changes:

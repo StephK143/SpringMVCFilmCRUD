@@ -41,7 +41,7 @@ public class FilmController {
 
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "keyword")
 	public String getStateByAbbr(String keyword, Model model) {
-		model.addAttribute("film", fd.findFilmByKeyword(keyword));
+		model.addAttribute("filmKeyword", fd.findFilmByKeyword(keyword));
 		return "result"; // placeholder page until we write .jsp
 	}
 }
