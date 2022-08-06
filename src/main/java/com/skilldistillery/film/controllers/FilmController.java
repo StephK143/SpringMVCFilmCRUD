@@ -36,6 +36,16 @@ public class FilmController {
 	@RequestMapping(path = "UpdateFilm.do", method = RequestMethod.POST)
 	public String updateFilm(Film film, Model model) {
 		model.addAttribute("filmEdit", fd.updateFilm(film));
+		model.addAttribute("editMessage", "Film was successfully edited.");
+		model.addAttribute("editFail", "There was a problem updated the film.");
+		return "result"; // placeholder page until we write .jsp
+	}
+	
+	@RequestMapping(path = "DeleteFilm.do", method = RequestMethod.POST)
+	public String deleteFilm(Film film, Model model) {
+		model.addAttribute("filmDelete", fd.deleteFilm(film));
+		model.addAttribute("deleteMessage", "Film was successfully deleted.");
+		model.addAttribute("deleteFail", "There was a problem deleting the film.");
 		return "result"; // placeholder page until we write .jsp
 	}
 
@@ -49,6 +59,7 @@ public class FilmController {
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "keyword")
 	public String getStateByAbbr(String keyword, Model model) {
 		model.addAttribute("filmKeyword", fd.findFilmByKeyword(keyword));
+		model.addAttribute("kwPrompt", "To edit a film in this list, search by the film id or the full title of the film.");
 		model.addAttribute("kwMessage", "There are no films that match your search");
 		return "result"; // placeholder page until we write .jsp
 	}
