@@ -14,6 +14,9 @@
   
   
     <form action="UpdateFilm.do" method="POST">
+      <label for="filmId">Film ID:</label>
+      <input type="text" name="filmId"/>
+      <br>
       <label for="title">Title:</label>
       <input type="text" name="title"/>
       <br>
