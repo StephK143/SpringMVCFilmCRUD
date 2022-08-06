@@ -17,7 +17,7 @@
       </ul>
     </c:when>
     <c:otherwise>
-      <p>No film found</p>
+      <p>${idMessage}</p>
     </c:otherwise>
   </c:choose>
   
@@ -42,6 +42,9 @@
 					</table>
 				</c:forEach>
 			</c:when>
+			<c:otherwise> 
+				<p>${kwMessage}</p>
+			</c:otherwise>
 		</c:choose>
   
 </body>

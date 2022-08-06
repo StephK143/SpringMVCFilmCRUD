@@ -36,12 +36,14 @@ public class FilmController {
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "filmId")
 	public String getFilmById(@RequestParam("filmId") int filmId, Model model) {
 		model.addAttribute("film", fd.findFilmById(filmId));
+		model.addAttribute("idMessage", "No film found");
 		return "result"; // placeholder page until we write .jsp
 	}
 
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "keyword")
 	public String getStateByAbbr(String keyword, Model model) {
 		model.addAttribute("filmKeyword", fd.findFilmByKeyword(keyword));
+		model.addAttribute("kwMessage", "There are no films that match your search");
 		return "result"; // placeholder page until we write .jsp
 	}
 }
