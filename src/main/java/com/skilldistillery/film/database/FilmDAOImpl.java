@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
-
 
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
@@ -20,7 +20,7 @@ public class FilmDAOImpl implements FilmDAO {
 
 	static {
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e) {
 			System.err.println(e);
 		}
@@ -37,7 +37,7 @@ public class FilmDAOImpl implements FilmDAO {
 			String sql = "SELECT * FROM film f JOIN film_category fc ON f.id = fc.film_id JOIN category c ON fc.category_id = c.id JOIN language l ON f.language_id = l.id WHERE f.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
-
+			System.out.println(stmt);
 			ResultSet filmResult = stmt.executeQuery();
 
 			if (filmResult.next()) {
@@ -49,7 +49,7 @@ public class FilmDAOImpl implements FilmDAO {
 						filmResult.getString("rating"), filmResult.getString("special_features"),
 						filmResult.getString("c.name"), findActorsByFilmId(filmId), findInventoryByFilmId(filmId));
 			}
-
+			System.out.println(film);
 			filmResult.close();
 			stmt.close();
 			conn.close();
@@ -292,6 +292,72 @@ public class FilmDAOImpl implements FilmDAO {
 
 	@Override
 	public Film createFilm(Film film) {
+		int newFilmId = 0;
+		int catId = 0;
+		ResultSet categoryId;
+		 Connection conn = null;
+		  try {
+		    conn = DriverManager.getConnection(URL, user, pass);
+		    conn.setAutoCommit(false); // START TRANSACTION
+		    String sql = "INSERT INTO film  (title, description, release_year, rental_duration, rental_rate, length, replacement_cost, rating, language_id) "
+		                     + " VALUES (?,?,?,?,?,?,?,?, 1)";
+		    PreparedStatement stmt = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+		    stmt.setString(1, film.getTitle());
+		    stmt.setString(2, film.getDescription());
+		    stmt.setInt(3, film.getReleaseYear());
+		    stmt.setInt(4, film.getDuration());
+		    stmt.setDouble(5, film.getRentalRate());
+		    stmt.setInt(6, film.getLength());
+		    stmt.setDouble(7, film.getReplaceCost());
+		    stmt.setString(8, film.getRating());
+		    int updateCount = stmt.executeUpdate();
+		    if (updateCount == 1) {
+		      ResultSet keys = stmt.getGeneratedKeys();
+		      if (keys.next()) {
+		        newFilmId = keys.getInt(1);
+		        film.setFilmId(newFilmId);
+//		        if (actor.getFilms() != null && actor.getFilms().size() > 0) {
+//		          sql = "INSERT INTO film_actor (film_id, actor_id) VALUES (?,?)";
+//		          stmt = conn.prepareStatement(sql);
+//		          for (Film film : actor.getFilms()) {
+//		            stmt.setInt(1, film.getId());
+//		            stmt.setInt(2, newActorId);
+//		            updateCount = stmt.executeUpdate();
+//		          }
+//		        }
+//		        keys.close();
+		      }
+		    } 
+//		    else {
+//		      film = null;
+//		    }
+		    String sql2 = "SELECT id FROM category WHERE name = ?";
+		    stmt = conn.prepareStatement(sql2);
+		    stmt.setString(1, film.getCategory());
+		    categoryId = stmt.executeQuery();
+		    if (categoryId.next()) {
+		         catId = categoryId.getInt("id");
+		    }
+		    String sql3 = "INSERT INTO film_category (film_id, category_id) VALUES (?,?)";
+		    stmt = conn.prepareStatement(sql3);
+		    stmt.setInt(1, newFilmId);
+		    stmt.setInt(2, catId);
+		    stmt.executeUpdate();
+		    
+//		    stmt.setString(9, film.getCategory());
+		    conn.commit(); // COMMIT TRANSACTION
+		    stmt.close();
+		    conn.close();
+		  } catch (SQLException sqle) {
+		    sqle.printStackTrace();
+		    if (conn != null) {
+		      try { conn.rollback(); }
+		      catch (SQLException sqle2) {
+		        System.err.println("Error trying to rollback");
+		      }
+		    }
+		    throw new RuntimeException("Error inserting film " + film);
+		  }
 		return film;
 	}
 
