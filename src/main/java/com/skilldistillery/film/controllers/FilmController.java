@@ -46,7 +46,7 @@ public class FilmController {
 		model.addAttribute("filmDelete", fd.deleteFilm(film));
 		model.addAttribute("deleteMessage", "Film was successfully deleted.");
 		model.addAttribute("deleteFail", "There was a problem deleting the film.");
-		return "result"; // placeholder page until we write .jsp
+		return "result"; // placeholder page until we write .jsp   -----redirect to another form using model object
 	}
 
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "filmId")
@@ -59,7 +59,7 @@ public class FilmController {
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "keyword")
 	public String getStateByAbbr(String keyword, Model model) {
 		model.addAttribute("filmKeyword", fd.findFilmByKeyword(keyword));
-		model.addAttribute("kwPrompt", "To edit a film in this list, search by the film id.");
+		model.addAttribute("kwPrompt", "To edit/delete a film in this list, search by the film id.");  //Can we automate filmID data transfer
 		model.addAttribute("kwMessage", "There are no films that match your search");
 		return "result"; // placeholder page until we write .jsp
 	}

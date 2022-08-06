@@ -10,7 +10,7 @@
 <td width=100%>
   <h3>Edit film:</h3>      
   
-  <!-- Check on how to mandate fields in update and add -->
+  <!-- List all current film details and prompt user to confirm with button -->
   
   
     <form action="UpdateFilm.do" method="POST">
@@ -46,10 +46,13 @@
       <br>
       <input type="submit" value="Edit Film">
     </form>
+    <br>
+    <br>
+		<a href="deleteFilmForm.jsp"><input type="button" value="Delete this film (you must know the film Id for this action)"></a>
 <!--    </td>
     <td width=80%>
     <form action="DeleteFilm.do" method="POST">
-		<a href="updateFilmForm.html"><input type="button" value="Edit/Delete"></a>
+		<a href="deleteFilmForm.html"><input type="button" value="Edit/Delete"></a>
       <input type="text" name="title" value="${film.title}"/>
     </form>
     </td> -->

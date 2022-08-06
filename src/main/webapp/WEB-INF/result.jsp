@@ -49,6 +49,8 @@
 					</tr>
 				</table>
 			</c:forEach>
+					<a href="updateFilmForm.jsp"><input type="button" value="Edit/Delete"></a>
+			
 		</c:when>
 		<c:otherwise>
 			<p>${kwMessage}</p>
