@@ -8,7 +8,7 @@ public class Film {
 	private int filmId;
 	private String title;
 	private String description;
-	private int release_year;
+	private int releaseYear;
 	private int langId;
 	private String language;
 	private int duration;
@@ -29,7 +29,7 @@ public class Film {
 		this.filmId = filmId;
 		this.title = title;
 		this.description = description;
-		this.release_year = release_year;
+		this.releaseYear = release_year;
 		this.langId = langId;
 		this.language = language;
 		this.duration = duration;
@@ -91,12 +91,12 @@ public class Film {
 		this.description = description;
 	}
 
-	public int getRelease_year() {
-		return release_year;
+	public int getReleaseYear() {
+		return releaseYear;
 	}
 
-	public void setRelease_year(int release_year) {
-		this.release_year = release_year;
+	public void setReleaseYear(int release_year) {
+		this.releaseYear = release_year;
 	}
 
 	public int getLangId() {
@@ -158,7 +158,7 @@ public class Film {
 	@Override
 	public int hashCode() {
 		return Objects.hash(actors, availableCopies, category, description, duration, features, filmId, langId,
-				language, length, rating, release_year, rentalRate, replaceCost, title);
+				language, length, rating, releaseYear, rentalRate, replaceCost, title);
 	}
 
 	@Override
@@ -174,7 +174,7 @@ public class Film {
 				&& Objects.equals(category, other.category) && Objects.equals(description, other.description)
 				&& duration == other.duration && Objects.equals(features, other.features) && filmId == other.filmId
 				&& langId == other.langId && Objects.equals(language, other.language) && length == other.length
-				&& Objects.equals(rating, other.rating) && release_year == other.release_year
+				&& Objects.equals(rating, other.rating) && releaseYear == other.releaseYear
 				&& Double.doubleToLongBits(rentalRate) == Double.doubleToLongBits(other.rentalRate)
 				&& Double.doubleToLongBits(replaceCost) == Double.doubleToLongBits(other.replaceCost)
 				&& Objects.equals(title, other.title);
@@ -203,15 +203,15 @@ public class Film {
 	}
 
 	public String fullPrint() {
-		return "Title: " + title + "\nRelease Year: " + release_year + "\nDescription: " + description + 
-				"\nLanguage ID: " + langId + "\t\tLanguage: " + language +"\t\tDuration: " + duration + "\t\tLength: " + length + "\nRental Rate: $" + rentalRate
+		return "Title: " + title + "\nRelease Year: " + releaseYear + "\nDescription: " + description + 
+				"\t\tLanguage: " + language +"\t\tDuration: " + duration + "\t\tLength: " + length + "\nRental Rate: $" + rentalRate
 				+ "\t\tReplacement Cost: $" + replaceCost + "\nRating: " + rating + "\t\tCategory: " + category + "\t\tFilm ID: " + filmId + "\nFeatures: "
 				+ features + "\nActors in film: " + printActors() + "\n\nList of available rentals and their condition:\n" + printInventory();
 	}
 
 	@Override
 	public String toString() {
-		return "Title: " + title + "\nRelease Year: " + release_year + "\tRating: " + rating + "\tLanguage: " + language + "\tFilm ID: " + filmId +
+		return "Title: " + title + "\nRelease Year: " + releaseYear + "\tRating: " + rating + "\tLanguage: " + language + "\tFilm ID: " + filmId +
 				"\nDescription: " + description + "\nActors in film: " + printActors();		
 	}
 }

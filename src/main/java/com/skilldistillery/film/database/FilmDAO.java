@@ -7,7 +7,7 @@ import com.skilldistillery.film.entities.Film;
 import com.skilldistillery.film.entities.InventoryItem;
 
 
-public interface DatabaseAccessor {
+public interface FilmDAO {
   public Film findFilmById(int filmId);
   public Actor findActorById(int actorId);
   public List<Actor> findActorsByFilmId(int filmId);

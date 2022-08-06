@@ -3,14 +3,14 @@ package com.skilldistillery.film.app;
 import java.util.List;
 import java.util.Scanner;
 
-import com.skilldistillery.film.database.DatabaseAccessor;
-import com.skilldistillery.film.database.DatabaseAccessorObject;
+import com.skilldistillery.film.database.FilmDAO;
+import com.skilldistillery.film.database.FilmDAOImpl;
 import com.skilldistillery.film.entities.Film;
 
 
 public class FilmQueryApp {
 
-	DatabaseAccessor db = new DatabaseAccessorObject();
+	FilmDAO db = new FilmDAOImpl();
 
 	Scanner input = new Scanner(System.in);
 

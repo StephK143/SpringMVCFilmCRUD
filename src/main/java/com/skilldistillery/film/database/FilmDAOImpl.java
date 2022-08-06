@@ -5,19 +5,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+
 
 import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 import com.skilldistillery.film.entities.InventoryItem;
 
-
-public class DatabaseAccessorObject implements DatabaseAccessor {
+public class FilmDAOImpl implements FilmDAO {
+	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=US/Mountain";
 	private static String user = "student";
 	private static String pass = "student";
-	private static final String URL = "jdbc:mysql://localhost:3306/sdvid?useSSL=false&useLegacyDatetimeCode=false&serverTimezone=US/Mountain";
 
 	static {
 		try {
@@ -27,7 +26,7 @@ public class DatabaseAccessorObject implements DatabaseAccessor {
 		}
 	}
 
-	public DatabaseAccessorObject() {
+	public FilmDAOImpl() {
 	}
 
 	@Override

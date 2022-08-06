@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+ xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+ xsi:schemaLocation="
+   http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-4.3.xsd
+   http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+   http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+   http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
+
+ <context:component-scan base-package="com.skilldistillery.film.controllers"/>
+ 
+ <mvc:annotation-driven/>
+ 
+ <bean id="dao" class="com.skilldistillery.film.database.FilmDAOImpl.java"/>
+ <!--
+ The above bean creates a temporary spot in memory to hold the new states- it will not actually add them to the database.
+ Use this DAO implementation to actually connect the site to a database and make live changes:
+ <bean id="dao" class="com.skilldistillery.advancedrequesthandling.data.JDBCStateDAOImpl"/>
+  -->
+ 
+ <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <property name="prefix" value="/WEB-INF/"/>
+    <property name="suffix" value=".jsp"/>
+</bean>
+</beans>
