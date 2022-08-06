@@ -10,7 +10,7 @@
 </head>
 <body>
 	<c:choose>
-		<c:when test="${! empty film}">
+		<c:when test="${! empty film}">    <!-- Add additional fields to show ALL the goodies -->
 			<ul>
 				<li>${film.filmId}</li>
 				<li>${film.title}</li>

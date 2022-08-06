@@ -37,7 +37,7 @@ public class FilmController {
 	public String updateFilm(Film film, Model model) {
 		model.addAttribute("filmEdit", fd.updateFilm(film));
 		model.addAttribute("editMessage", "Film was successfully edited.");
-		model.addAttribute("editFail", "There was a problem updated the film.");
+		model.addAttribute("editFail", "There was a problem updating the film.");
 		return "result"; // placeholder page until we write .jsp
 	}
 	
@@ -59,7 +59,7 @@ public class FilmController {
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "keyword")
 	public String getStateByAbbr(String keyword, Model model) {
 		model.addAttribute("filmKeyword", fd.findFilmByKeyword(keyword));
-		model.addAttribute("kwPrompt", "To edit a film in this list, search by the film id or the full title of the film.");
+		model.addAttribute("kwPrompt", "To edit a film in this list, search by the film id.");
 		model.addAttribute("kwMessage", "There are no films that match your search");
 		return "result"; // placeholder page until we write .jsp
 	}

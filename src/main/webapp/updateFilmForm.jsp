@@ -8,7 +8,11 @@
 <table>
 <tr>
 <td width=100%>
-  <h3>Edit film:</h3>
+  <h3>Edit film:</h3>      
+  
+  <!-- Check on how to mandate fields in update and add -->
+  
+  
     <form action="UpdateFilm.do" method="POST">
       <label for="title">Title:</label>
       <input type="text" name="title"/>
