@@ -370,9 +370,11 @@ public class FilmDAOImpl implements FilmDAO {
 			stmt.setDouble(6, film.getReplaceCost());
 			stmt.setString(7, film.getRating());
 			stmt.setString(8, film.getFeatures());
+			stmt.setInt(9, film.getFilmId());
 
 			int updateCount = stmt.executeUpdate();
 			if (updateCount == 1) {
+				//redirect model to automate filmId into edit or delete in controller
 
 				// Replace actor's film list
 //		      sql = "DELETE FROM film_actor WHERE actor_id = ?";
@@ -406,6 +408,35 @@ public class FilmDAOImpl implements FilmDAO {
 
 	@Override
 	public boolean deleteFilm(Film film) {
+		  Connection conn = null;
+		  try {
+		    conn = DriverManager.getConnection(URL, user, pass);
+		    conn.setAutoCommit(false); // START TRANSACTION
+		    String sql = "DELETE FROM film_category WHERE film_id = ?";
+		    PreparedStatement stmt = conn.prepareStatement(sql);
+		    stmt.setInt(1, film.getFilmId());
+		    int updateCount = stmt.executeUpdate();
+		    sql = "DELETE FROM film WHERE id = ?";
+		    stmt = conn.prepareStatement(sql);
+		    stmt.setInt(1, film.getFilmId());
+		    updateCount = stmt.executeUpdate();
+//		    sql = "DELETE FROM actor WHERE id = ?";
+//		    stmt = conn.prepareStatement(sql);
+//		    stmt.setInt(1, film.getFilmId());
+//		    updateCount = stmt.executeUpdate();
+		    conn.commit();             // COMMIT TRANSACTION
+		  }
+		  catch (SQLException sqle) {
+		    sqle.printStackTrace();
+		    if (conn != null) {
+		      try { conn.rollback(); }
+		      catch (SQLException sqle2) {
+		        System.err.println("Error trying to rollback");
+		      }
+		    }
+		    return false;
+		  }
+		
 		return true;
 	}
 }
