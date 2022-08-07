@@ -1,8 +1,5 @@
-<<<<<<< HEAD:src/main/webapp/updateFilmForm.jsp
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%> 
->>>>>>> 8230dc46356b68b0ccdb2a9e429ae8c5101a8bea:src/main/webapp/WEB-INF/updateFilmForm.jsp
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -33,35 +30,31 @@
       <input  type="text"  name="filmId" value="${film.filmId}">
       <br>
       <label for="title">Title:</label>
-<<<<<<< HEAD:src/main/webapp/updateFilmForm.jsp
-      <input type="text" name="title" value="${model.title }"/>
-=======
       <input type="text" value="${film.title}" name="title">
->>>>>>> 8230dc46356b68b0ccdb2a9e429ae8c5101a8bea:src/main/webapp/WEB-INF/updateFilmForm.jsp
       <br>
       <label for="description">Description:</label>
       <input type="text" name="description" value="${film.description}">
       <br>
       <label for="releaseYear">Year film was released:</label>
-      <input type="text" name="releaseYear" value="${releaseYear}">
+      <input type="text" name="releaseYear" value="${film.releaseYear}">
       <br>
       <label for="duration">Duration of rental:</label>
-      <input type="number" name="duration">
+      <input type="number" name="duration" value="${film.duration}">
       <br>
       <label for="rentalRate">Rental Rate:</label>
-      <input type="text" name="rentalRate">
+      <input type="text" name="rentalRate" value="${film.rentalRate}">
       <br>
       <label for="length">Length:</label>
-      <input type="text" name="length">
+      <input type="text" name="length" value="${film.length}">
       <br>
       <label for="replaceCost">Replacement Cost:</label>
-      <input type="text" name="replaceCost">
+      <input type="text" name="replaceCost" value="${film.replaceCost}">
       <br>
       <label for="rating">Rating:</label>
-      <input type="text" name="rating">
+      <input type="text" name="rating" value="${film.rating}">
       <br>
       <label for="category">Film Category:</label>
-      <input type="text" name="category">
+      <input type="text" name="category" value="${film.category}">
       <br>
       <input type="submit" value="Edit Film">
      
