@@ -9,9 +9,13 @@
 <title>Films</title>
 </head>
 <body>
+	<a href="index.html"><input type="button"
+		value="Take me back to the home page"></a>
+
 	<c:choose>
-		<c:when test="${! empty film}">    <!-- Add additional fields to show ALL the goodies -->
-				<h2>Film Title: ${film.title}</h2>
+		<c:when test="${! empty film}">
+			<!-- Add additional fields to show ALL the goodies -->
+			<h2>Film Title: ${film.title}</h2>
 			<ul>
 				<li>Film ID: ${film.filmId}</li>
 				<li>Description: ${film.description}</li>
@@ -25,21 +29,25 @@
 				<li>Features: ${film.features}</li>
 				<li>Category: ${film.category}</li>
 			</ul>
-				<h2>Actors in this film:</h2>
-				<c:forEach var="actor" items="${film.actors}">
-							<ul style="list-style-type: none">
-								<li><strong>${actor.firstName} ${actor.lastName}</strong></li>
-							</ul>
+			<h2>Actors in this film:</h2>
+			<c:forEach var="actor" items="${film.actors}">
+				<ul style="list-style-type: none">
+					<li><strong>${actor.firstName} ${actor.lastName}</strong></li>
+				</ul>
 			</c:forEach>
 			<br>
-				
-	<form action="EditFilm.do" method="get">
-		 <input type="hidden" value=${film.filmId } name="filmId"/>
-		 <input type="submit" value="Edit/Delete"/>
-		 
-	
-	</form>
-			
+
+			<form action="EditFilm.do" method="get">
+				<input type="hidden" value=${film.filmId } name="filmId" /> <input
+					type="submit" value="Edit Film" />
+
+			</form>
+
+			<form action="ConfirmDelete.do" method="get">
+				<input type="hidden" value=${film.filmId } name="filmId" /> <input
+					type="submit" value="Delete Film" />
+			</form>
+
 		</c:when>
 		<c:otherwise>
 			<p>${idMessage}</p>
@@ -52,32 +60,37 @@
 			<br>
 			<h3>${kwPrompt}</h3>
 			<c:forEach var="film" items="${filmKeyword}">
-				<table>
-					<tr>
-						<td align=left>
-						</td>
-						<td align=left width=80%>
-							<ul style="list-style-type: none">
-								<li><h3>
-										<strong>Film Title:</strong> ${film.title}
-									</h3></li>
-								<li><h3>
-										<strong>Description: </strong>${film.description}</h3></li>
-							</ul>
-						</td>
-					</tr>
-				</table>
+				<ul style="list-style-type: none">
+					<li><h3>
+							<strong>Film Title:</strong> ${film.title}
+						</h3></li>
+					<li><h3>
+							<strong>Description: </strong>${film.description}</h3></li>
+				</ul>
+				<form action="EditFilm.do" method="get">
+					<input type="hidden" value=${film.filmId } name="filmId" /> <input
+						type="submit" value="Edit Film" />
+
+				</form>
+
+				<form action="ConfirmDelete.do" method="get">
+					<input type="hidden" value=${film.filmId } name="filmId" /> <input
+						type="submit" value="Delete Film" />
+				</form>
+				<form action="GetFilm.do" method="get">
+					<input type="hidden" value=${film.filmId } name="filmId" /> <input
+						type="submit" value="List all film details" />
+				</form>
+
 			</c:forEach>
-					<a href="updateFilmForm.jsp"><input type="button" value="Edit/Delete"></a>
-			
 		</c:when>
 		<c:otherwise>
 			<p>${kwMessage}</p>
 		</c:otherwise>
 	</c:choose>
-		<c:choose>
+	<c:choose>
 		<c:when test="${filmEdit == true}">
-				<p>${editMessage}</p>
+			<p>${editMessage}</p>
 		</c:when>
 		<c:otherwise>
 			<p>${editFail}</p>
@@ -85,7 +98,7 @@
 	</c:choose>
 	<c:choose>
 		<c:when test="${filmDelete == true}">
-				<p>${deleteMessage}</p>
+			<p>${deleteMessage}</p>
 		</c:when>
 		<c:otherwise>
 			<p>${deleteFail}</p>

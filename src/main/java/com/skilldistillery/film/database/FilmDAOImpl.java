@@ -57,33 +57,33 @@ public class FilmDAOImpl implements FilmDAO {
 		return film;
 	}
 	
-	@Override
-	public Film inputFilmToEditor(int filmId) {
-		Film film = null;
-		try {
-			Connection conn = DriverManager.getConnection(URL, user, pass);
-			String sql = "SELECT * FROM film f JOIN film_category fc ON f.id = fc.film_id JOIN category c ON fc.category_id = c.id JOIN language l ON f.language_id = l.id WHERE f.id = ?";
-			PreparedStatement stmt = conn.prepareStatement(sql);
-			stmt.setInt(1, filmId);
-			ResultSet filmResult = stmt.executeQuery();
-
-			if (filmResult.next()) {
-				film = new Film(filmResult.getInt("f.id"), filmResult.getString("title"),
-						filmResult.getString("description"), filmResult.getInt("release_year"),
-						filmResult.getInt("language_id"), filmResult.getString("l.name"),
-						filmResult.getInt("rental_duration"), filmResult.getDouble("rental_rate"),
-						filmResult.getInt("length"), filmResult.getDouble("replacement_cost"),
-						filmResult.getString("rating"), filmResult.getString("special_features"),
-						filmResult.getString("c.name"), findActorsByFilmId(filmId), findInventoryByFilmId(filmId));
-			}
-			filmResult.close();
-			stmt.close();
-			conn.close();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-		return film;
-	}
+//	@Override
+//	public Film inputFilmToEditor(int filmId) {
+//		Film film = null;
+//		try {
+//			Connection conn = DriverManager.getConnection(URL, user, pass);
+//			String sql = "SELECT * FROM film f JOIN film_category fc ON f.id = fc.film_id JOIN category c ON fc.category_id = c.id JOIN language l ON f.language_id = l.id WHERE f.id = ?";
+//			PreparedStatement stmt = conn.prepareStatement(sql);
+//			stmt.setInt(1, filmId);
+//			ResultSet filmResult = stmt.executeQuery();
+//
+//			if (filmResult.next()) {
+//				film = new Film(filmResult.getInt("f.id"), filmResult.getString("title"),
+//						filmResult.getString("description"), filmResult.getInt("release_year"),
+//						filmResult.getInt("language_id"), filmResult.getString("l.name"),
+//						filmResult.getInt("rental_duration"), filmResult.getDouble("rental_rate"),
+//						filmResult.getInt("length"), filmResult.getDouble("replacement_cost"),
+//						filmResult.getString("rating"), filmResult.getString("special_features"),
+//						filmResult.getString("c.name"), findActorsByFilmId(filmId), findInventoryByFilmId(filmId));
+//			}
+//			filmResult.close();
+//			stmt.close();
+//			conn.close();
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//		}
+//		return film;
+//	}
 
 	@Override
 	public Actor findActorById(int actorId) {
@@ -467,4 +467,6 @@ public class FilmDAOImpl implements FilmDAO {
 		
 		return true;
 	}
+
+
 }
