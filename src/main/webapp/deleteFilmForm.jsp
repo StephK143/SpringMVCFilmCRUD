@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%> 
+	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -10,42 +10,59 @@
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
-					<a href="index.html"><input type="button" value="Take me back to the home page"></a>
+	<a href="index.html"><img
+		src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png"
+		align="right" width=5% title="Home Page" /></a>
 
-<br>
-  <h1>Is this the film you want to delete: </h1>      
-  
-  <!-- Check on how to mandate fields in update and add -->
-  	<c:choose>
-		<c:when test="${! empty film}">    <!-- Add additional fields to show ALL the goodies -->
-				<h2>Film Title: ${film.title}</h2>
-			<ul>
-				<li>Film ID: ${film.filmId}</li>
-				<li>Description: ${film.description}</li>
-				<li>Release Year: ${film.releaseYear}</li>
-				<li>Language: ${film.language}</li>
-				<li>Duration: ${film.duration}</li>
-				<li>Rental Rate: ${film.rentalRate}</li>
-				<li>Length: ${film.length}</li>
-				<li>Replacement Cost: ${film.replaceCost}</li>
-				<li>Rating: ${film.rating}</li>
-				<li>Features: ${film.features}</li>
-				<li>Category: ${film.category}</li>
-			</ul>
-				<h2>Actors in this film:</h2>
-				<c:forEach var="actor" items="${film.actors}">
+	<br>
+	<h1>Is this the film you want to delete:</h1>
+
+	<c:choose>
+		<c:when test="${! empty film}">
+			<h2>Film Title: ${film.title}</h2>
+			<table id="filmDetails">
+				<thead>
+					<tr>
+						<th>Film Details</th>
+						<th>Rental Details</th>
+						<th>Actors In Film</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
 							<ul style="list-style-type: none">
-								<li><strong>${actor.firstName} ${actor.lastName}</strong></li>
+								<li><span><strong>Description:</strong></span>${film.description}</li>
+								<li><span><strong>Rating:</strong></span> ${film.rating}</li>
+								<li><span><strong>Release Year:</strong></span>${film.releaseYear}</li>
+								<li><span><strong>Language:</strong></span>${film.language}</li>
+								<li><span><strong>Category:</strong></span>${film.category}</li>
+								<li><span><strong>Features:</strong></span>${film.features}</li>
 							</ul>
-			</c:forEach>
-			<br>
-			</c:when>
-		
-			</c:choose>
-  	<form action="DeleteFilm.do" method="post">
-		 <input type="hidden" value=${film.filmId } name="filmId"/>
-		 <input class="danger" type="submit" value="Yes, delete this film"/>
+						</td>
+						<td>
+							<ul style="list-style-type: none">
+								<li><span><strong>Length:</strong></span> ${film.length}</li>
+								<li><span><strong>Film ID:</strong></span> ${film.filmId}</li>
+								<li><span><strong>Rental Rate:</strong></span>${film.rentalRate}</li>
+								<li><span><strong>Duration:</strong></span>${film.duration}</li>
+								<li><span><strong>Replacement Cost:</strong></span>${film.replaceCost}</li>
+							</ul>
+						</td>
+						<td><c:forEach var="actor" items="${film.actors}">
+								<ul style="list-style-type: none">
+									<li><strong>${actor.firstName} ${actor.lastName}</strong></li>
+								</ul>
+							</c:forEach> <br></td>
+					</tr>
+				</tbody>
+			</table>
+		</c:when>
+	</c:choose>
+	<form action="DeleteFilm.do" method="post">
+		<input type="hidden" value=${film.filmId } name="filmId" /> 
+		<input class="danger" type="submit" value="Yes, delete this film" />
 	</form>
-  </body>
+</body>
 </body>
 </html>

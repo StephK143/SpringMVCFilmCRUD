@@ -6,13 +6,21 @@
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
-					<a href="index.html"><input type="button" value="Take me back to the home page"></a>
+	<a href="index.html"><img src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png" align="right" width= 5% title="Home Page"/></a>
 <br>
-	<h3>Films</h3>
-	<form action="GetFilm.do" method="GET">
-		Keyword:
-		<input type="text" name="keyword" size="4"/> 
-		<input type="submit" value="Search for Film" />
-	</form>
+
+	<table id="actions">
+		<tr>
+			<td><img src="https://cdn1.iconfinder.com/data/icons/powerful-seo-icon-set/512/keyword_1__.png"
+				width=80% title="Search for film by keyword" /></td>
+			<td>
+				<h2>Enter Keyword:</h2>
+				<form action="GetFilm.do" method="GET">Keyword: <input type="text" size="30" name="keyword" size="4" />
+				<input type="submit" value="Search for Film" />
+				</form>
+			</td>
+			<td></td>
+		</tr>
+	</table>
 </body>
 </html>

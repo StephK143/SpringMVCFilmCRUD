@@ -37,9 +37,10 @@ public class FilmController {
 
 	@RequestMapping(path = "NewActor.do", method = RequestMethod.POST)
 	public String createActor(Actor actor, @RequestParam("filmTitle") String filmTitle, Model model) {
-		model.addAttribute("actor", fd.createActor(actor, filmTitle));
+		Actor newActor = fd.createActor(actor, filmTitle);
+		model.addAttribute("actor", newActor);
+		model.addAttribute("actorSize", (fd.findFilmsByActorId(newActor.getId())).size());
 		model.addAttribute("badActor", "Actor couldn't be added");
-
 		return "result"; 
 	}
 	
@@ -48,6 +49,7 @@ public class FilmController {
 	public ModelAndView updateFilm(Film film, Model model, RedirectAttributes redir, int filmId, @RequestParam("filmId") String id) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("filmEdit", fd.updateFilm(film));
+		mv.addObject("film", fd.findFilmById(film.getFilmId()));
 		model.addAttribute("editMessage", "Film was successfully updated.");
 		model.addAttribute("editFail", "There was a problem updating the film.");
 		mv.setViewName("result");
@@ -98,7 +100,6 @@ public class FilmController {
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "keyword")
 	public String getStateByAbbr(String keyword, Model model) {
 		model.addAttribute("filmKeyword", fd.findFilmByKeyword(keyword));
-		model.addAttribute("kwPrompt", "To edit/delete a film in this list, search by the film id.");  
 		model.addAttribute("kwMessage", "There are no films that match your search");
 		return "result";
 	}

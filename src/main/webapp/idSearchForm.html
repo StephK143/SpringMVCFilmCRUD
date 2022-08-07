@@ -6,13 +6,21 @@
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
-					<a href="index.html"><input type="button" value="Take me back to the home page"></a>
-<br>
-  <h3>Films</h3>
-  <form action="GetFilm.do" method="GET">
-    ID:
-    <input type="text" name="filmId"/> 
-    <input type="submit" value="Search for Film" />
-  </form>
+	<a href="index.html"><img src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png"
+		align="right" width=5% title="Home Page" /></a>
+	<br>
+	<table id="actions">
+		<tr>
+			<td><img src="https://cdn0.iconfinder.com/data/icons/movie-and-video-2/512/search-video-files-movie-searching-512.png"
+				width=80% title="Search for film by ID" /></td>
+			<td>
+				<h2>Enter Film ID</h2>
+				<form action="GetFilm.do" method="GET">ID: <input type="text" name="filmId" /> <input type="submit"
+						value="Search for Film" />
+				</form>
+			</td>
+			<td></td>
+		</tr>
+	</table>
 </body>
 </html>

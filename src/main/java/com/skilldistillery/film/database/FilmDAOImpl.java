@@ -110,7 +110,7 @@ public class FilmDAOImpl implements FilmDAO {
 	@Override
 	public List<Film> findFilmsByActorId(int actorId) {
 		List<Film> films = new ArrayList<Film>();
-		String sql = "SELECT * FROM film f JOIN film_actor ON actor.id = film_actor.actor_id WHERE actor_id = ?";
+		String sql = "SELECT * FROM film f JOIN film_category fc ON f.id = fc.film_id JOIN category c ON fc.category_id = c.id JOIN film_actor ON f.id = film_actor.film_id WHERE actor_id = ?";
 		
 		try {
 			Connection conn = DriverManager.getConnection(URL, user, pass);
@@ -225,6 +225,9 @@ public class FilmDAOImpl implements FilmDAO {
 		    keys = stmt.executeQuery();
 		    if (keys.next()) {
 		         filmId = keys.getInt("id");
+		    }
+		    else {
+		    	actor = null;
 		    }
 		    
 		    String sql3 = "INSERT INTO film_actor (actor_id, film_id) VALUES (?,?)";

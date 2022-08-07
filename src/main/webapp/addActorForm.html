@@ -6,21 +6,32 @@
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
-					<a href="index.html"><input type="button" value="Take me back to the home page"></a>
-<br>
-  <h3>Add an actor:</h3>
-    <form action="NewActor.do" method="POST">
-      <label for="firstName">First Name:</label>
-      <input type="text" name="firstName"/>
-      <br>
-      <label for="lastName">Last Name:</label>
-      <input type="text" name="lastName">
-      <br>
-      <label for="filmTitle">Film Title:</label>
-      <input type="text" name="filmTitle">
-      <br>
-      <input type="submit" value="Add Actor">
-    </form>
-  </body>
+	<a href="index.html"><img
+		src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png"
+		align="right" width=5% title="Home Page" /></a>
+	<br>
+	<table id="actions">
+		<tr>
+			<td><img src="https://i.pinimg.com/originals/d2/ea/d8/d2ead876ae76ba7147f68e7d2417c5f3.png"
+				width=75% title="Add actor" /></td>
+			<td>
+				<h2>Add an actor:</h2>
+				<form action="NewActor.do" method="POST">
+					<label for="firstName">First Name:</label> 
+					<input type="text" name="firstName" required /> 
+					<br> 
+					<label for="lastName">Last Name:</label> 
+					<input type="text" name="lastName" required> 
+					<br> 
+					<label for="filmTitle">Film Title:</label> 
+					<input type="text" name="filmTitle" required> 
+					<br><br> 
+					<input type="submit" value="Add Actor" >
+				</form>
+			</td>
+			<td></td>
+		</tr>
+	</table>
+</body>
 </body>
 </html>

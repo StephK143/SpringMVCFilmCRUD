@@ -10,115 +10,170 @@
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
-	<a href="index.html"><input type="button"
-		value="Take me back to the home page"></a>
+	<a href="index.html"><img src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png" align="right" width= 5% title="Home Page"/></a>
 
 	<c:choose>
 		<c:when test="${! empty film}">
 			<h2>Film Title: ${film.title}</h2>
-			<ul>
-				<li>Film ID: ${film.filmId}</li>
-				<li>Description: ${film.description}</li>
-				<li>Release Year: ${film.releaseYear}</li>
-				<li>Language: ${film.language}</li>
-				<li>Duration: ${film.duration}</li>
-				<li>Rental Rate: ${film.rentalRate}</li>
-				<li>Length: ${film.length}</li>
-				<li>Replacement Cost: ${film.replaceCost}</li>
-				<li>Rating: ${film.rating}</li>
-				<li>Features: ${film.features}</li>
-				<li>Category: ${film.category}</li>
-			</ul>
-			<h2>Actors in this film:</h2>
-			<c:forEach var="actor" items="${film.actors}">
-				<ul style="list-style-type: none">
-					<li><strong>${actor.firstName} ${actor.lastName}</strong></li>
-				</ul>
-			</c:forEach>
-			<br>
-
-			<form action="EditFilm.do" method="get">
-				<input type="hidden" value=${film.filmId } name="filmId" /> <input
-					type="submit" value="Edit Film" />
-
-			</form>
-
-			<form action="ConfirmDelete.do" method="get">
-				<input type="hidden" value=${film.filmId } name="filmId" /> <input
-					type="submit" value="Delete Film" />
-			</form>
-
-			<form action="Inventory.do" method="get">
-				<input type="hidden" value=${film.filmId } name="filmId" /> <input
-					type="submit" value="Show Me Inventory By Store" />
-			</form>
-
+			<table id="filmDetails">
+				<thead>
+					<tr>
+						<th>Film Details</th>
+						<th>Rental Details</th>
+						<th>Actors In Film</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td>
+							<ul style="list-style-type: none">
+								<li><span><strong>Description:</strong></span>
+									${film.description}</li>
+								<li><span><strong>Rating:</strong></span> ${film.rating}</li>
+								<li><span><strong>Release Year:</strong></span>
+									${film.releaseYear}</li>
+								<li><span><strong>Language:</strong></span>
+									${film.language}</li>
+								<li><span><strong>Category:</strong></span>
+									${film.category}</li>
+								<li><span><strong>Features:</strong></span>
+									${film.features}</li>
+							</ul>
+						</td>
+						<td>
+							<ul style="list-style-type: none">
+								<li><span><strong>Length:</strong></span> ${film.length}</li>
+								<li><span><strong>Film ID:</strong></span> ${film.filmId}</li>
+								<li><span><strong>Rental Rate:</strong></span>
+									${film.rentalRate}</li>
+								<li><span><strong>Duration:</strong></span>
+									${film.duration}</li>
+								<li><span><strong>Replacement Cost:</strong></span>
+									${film.replaceCost}</li>
+							</ul>
+						</td>
+						<td>
+							<c:forEach var="actor" items="${film.actors}">
+								<ul style="list-style-type: none">
+									<li><strong>${actor.firstName} ${actor.lastName}</strong></li>
+								</ul>
+							</c:forEach> <br>
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<form action="EditFilm.do" method="get">
+								<input type="hidden" value=${film.filmId } name="filmId" /> 
+								<input type="submit" value="Edit Film" />
+							</form>
+						</td>
+						<td>
+							<form action="ConfirmDelete.do" method="get">
+								<input type="hidden" value=${film.filmId } name="filmId" /> 
+								<input type="submit" value="Delete Film" />
+							</form>
+						</td>
+						<td>
+							<form action="Inventory.do" method="get">
+								<input type="hidden" value=${film.filmId } name="filmId" /> 
+								<input type="submit" value="Show Me Inventory By Store" />
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</c:when>
 		<c:otherwise>
-			<p>${idMessage}</p>
+			<h3>${idMessage}</h3>
 		</c:otherwise>
 	</c:choose>
 
 	<c:choose>
 		<c:when test="${not empty filmKeyword}">
-			<h2>Films that match your search:</h2>
+			<h1>Films that match your search:</h1>
 			<br>
-			<h3>${kwPrompt}</h3>
-			<c:forEach var="film" items="${filmKeyword}">
-				<ul style="list-style-type: none">
-					<li><h3>
-							<strong>Film Title:</strong> ${film.title}
-						</h3></li>
-					<li><h3>
-							<strong>Description: </strong>${film.description}</h3></li>
-				</ul>
-				<form action="EditFilm.do" method="get">
-					<input type="hidden" value=${film.filmId } name="filmId" /> <input
-						type="submit" value="Edit Film" />
+			<table class="keywordTable" id="kwTable">
+				<thead>
+					<tr>
+						<th>Film Title</th>
+						<th>Description</th>
+						<th>Release Year</th>
+						<th>Language</th>
+						<th>Rental Rate</th>
+					</tr>
+				</thead>
 
-				</form>
+				<tbody>
+					<c:forEach var="film" items="${filmKeyword}">
+						<tr>
+							<td><strong>${film.title}</strong></td>
+							<td><strong>${film.description}</strong></td>
+							<td><strong>${film.releaseYear}</strong></td>
+							<td><strong>${film.language}</strong></td>
+							<td><strong>${film.rentalRate}</strong></td>
+							<td>
+								<form action="EditFilm.do" method="get">
+									<input type="hidden" value=${film.filmId } name="filmId" /> 
+									<input type="submit" value="Edit Film" />
+								</form>
 
-				<form action="ConfirmDelete.do" method="get">
-					<input type="hidden" value=${film.filmId } name="filmId" /> <input
-						type="submit" value="Delete Film" />
-				</form>
-				<form action="GetFilm.do" method="get">
-					<input type="hidden" value=${film.filmId } name="filmId" /> <input
-						type="submit" value="List all film details" />
-				</form>
+							</td>
+							<td>
+								<form action="ConfirmDelete.do" method="get">
+									<input type="hidden" value=${film.filmId } name="filmId" /> 
+									<input type="submit" value="Delete Film" />
+								</form>
 
-			</c:forEach>
+							</td>
+							<td>
+								<form action="GetFilm.do" method="get">
+									<input type="hidden" value=${film.filmId } name="filmId" /> 
+									<input type="submit" value="List all film details" />
+								</form>
+
+							</td>
+						</tr>
+					</c:forEach>
+			</table>
 		</c:when>
 		<c:otherwise>
-			<p>${kwMessage}</p>
+			<h3>${kwMessage}</h3>
 		</c:otherwise>
 	</c:choose>
 	<c:choose>
 		<c:when test="${filmEdit == true}">
-			<p>${editMessage}</p>
+			<h3>${editMessage}</h3>
 		</c:when>
 		<c:otherwise>
-			<p>${editFail}</p>
+			<h3>${editFail}</h3>
 		</c:otherwise>
 	</c:choose>
 	<c:choose>
 		<c:when test="${filmDelete == true}">
-			<p>${deleteMessage}</p>
+			<h3>${deleteMessage}</h3>
 		</c:when>
 		<c:otherwise>
-			<p>${deleteFail}</p>
+			<h3>${deleteFail}</h3>
 		</c:otherwise>
 	</c:choose>
-	
+
 	<c:choose>
 		<c:when test="${! empty actor}">
 			<h2>Actor Added:</h2>
 			<ul>
 				<li>Actor Name: ${actor.firstName} ${actor.lastName}</li>
+				<li>Actor ID: ${actor.id}</li>
 			</ul>
 			<br>
-
-<!-- 			<form action="EditActor.do" method="get">
+			<h2>Films Starring This Actor:</h2>
+			${actorSize}
+			<c:forEach var="movie" items="${actorFilms}">
+				<ul style="list-style-type: none">
+					<li><strong>${movie.title} ${movie.description}</strong></li>
+				</ul>
+			</c:forEach>
+			<br>
+			<!-- 			<form action="EditActor.do" method="get">
 				<input type="hidden" value=${film.filmId } name="filmId" /> <input
 					type="submit" value="Edit Film" />
 
@@ -131,34 +186,35 @@
 
 		</c:when>
 		<c:otherwise>
-			<p>${badActor}</p>
+			<h3>${badActor}</h3>
 		</c:otherwise>
 	</c:choose>
-	
+
 	<c:choose>
-	<c:when test="${! empty inventory}">
-	<table class="inventoryTable" id="invTable">
-	<thead>
-	<tr>
-	<th>Title</th>
-	<th>Inventory ID</th>
-	<th>Condition</th>
-	<th>Store Address</th>
-	</tr>
-	</thead>
-	
-	<tbody>
-		<c:forEach var="copy" items="${inventory}">
-		<tr>
-					<td><strong>${copy.filmTitle}</strong></td>
-					<td><strong>${copy.invId}</strong></td>
-					<td><strong>${copy.condition}</strong></td>
-					<td><strong>${copy.address}</strong></td>
-				</tr>
-			</c:forEach>
-	</tbody>
-	</table>
-	</c:when>
+		<c:when test="${! empty inventory}">
+		<h2>Copies Available in Store</h2>
+			<table class="inventoryTable" id="invTable">
+				<thead>
+					<tr>
+						<th>Title</th>
+						<th>Inventory ID</th>
+						<th>Condition</th>
+						<th>Store Address</th>
+					</tr>
+				</thead>
+
+				<tbody>
+					<c:forEach var="copy" items="${inventory}">
+						<tr>
+							<td><strong>${copy.filmTitle}</strong></td>
+							<td><strong>${copy.invId}</strong></td>
+							<td><strong>${copy.condition}</strong></td>
+							<td><strong>${copy.address}</strong></td>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+		</c:when>
 	</c:choose>
 
 </body>

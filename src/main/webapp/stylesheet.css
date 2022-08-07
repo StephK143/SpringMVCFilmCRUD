@@ -8,16 +8,44 @@
 	padding: 10px;
 }
 
+#filmDetails td, #actions td {
+	text-align: left;
+	width: 200px;
+	height: 80%;
+	padding: 0;
+	margin: 0;
+}
+
 .danger {
+	vertical-align:baseline;
 	color: white;
 	width: 500px;
 	height: 50px;
 	background-color: red;
 	text-align: center;
 	vertical-align: middle;
-	
-	horizontal-align: middle;
 	font-size: 30px;
 	padding: 20px;
 	border-radius: 15px;
 }
+
+table{
+	text-align: left;
+	width: 100%;
+	
+}
+
+th {
+	padding: 20px;
+	white-space: nowrap;
+	font-size: 22px;
+	text-align: left;
+}
+
+td {
+	padding: 20px;
+	width: auto;
+	height: auto;
+	
+}
+
