@@ -25,6 +25,7 @@
 				<li>Features: ${film.features}</li>
 				<li>Category: ${film.category}</li>
 			</ul>
+<<<<<<< HEAD
 				<h2>Actors in this film:</h2>
 				<c:forEach var="actor" items="${film.actors}">
 							<ul style="list-style-type: none">
@@ -33,6 +34,8 @@
 			</c:forEach>
 			<br>
 				
+=======
+>>>>>>> 2e13035abf6d47c4b03eb58cca7beff9c1cf77b6
 	<form action="EditFilm.do" method="get">
 		 <input type="hidden" value=${film.filmId } name="filmId"/>
 		 <input type="submit" value="Edit/Delete"/>
