@@ -12,8 +12,8 @@
 </head>
 <body>
 <br>
-  					<a href="index.html"><input type="button" value="Take me back to the home page"></a>
-  <br>
+<a href="index.html"><input type="button" value="Take me back to the home page"></a>
+ 
 <table>
 <tr>
 <td width=100%>
@@ -64,6 +64,7 @@
     <br>
     <br>
 		<a href="deleteFilmForm.jsp"><input type="button" value="Delete this film (you must know the film Id for this action)"></a>
+
       </tr>
  
     </table>
