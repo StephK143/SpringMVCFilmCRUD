@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -16,6 +17,11 @@
 				<li>${film.title}</li>
 				<li>${film.description}</li>
 			</ul>
+<<<<<<< HEAD
+			<form action="InputFilm.do" method="GET">
+		<a href="updateFilmForm.jsp"><input type="button" value="Edit/Delete"></a>
+		</form>
+=======
 	<form action="EditFilm.do" method="get">
 		 <input type="hidden" value=${film.filmId } name="filmId"/>
 		 <input type="submit" value="Edit/Delete"/>
@@ -23,6 +29,7 @@
 	
 	</form>
 			
+>>>>>>> 8230dc46356b68b0ccdb2a9e429ae8c5101a8bea
 		</c:when>
 		<c:otherwise>
 			<p>${idMessage}</p>

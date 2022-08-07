@@ -3,7 +3,6 @@ package com.skilldistillery.film.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -83,4 +82,12 @@ public class FilmController {
 		model.addAttribute("kwMessage", "There are no films that match your search");
 		return "result"; // placeholder page until we write .jsp
 	}
+	
+	@RequestMapping(path = "InputFilm.do", method = RequestMethod.GET, params = "filmId")
+	public String inputFilmToEditor(@RequestParam("filmId") int filmId, Model model) {
+		model.addAttribute("film", fd.findFilmById(filmId));
+		model.addAttribute("idMessage", "No film found");
+		return "updateFilmForm"; // placeholder page until we write .jsp
+	}
+	
 }
