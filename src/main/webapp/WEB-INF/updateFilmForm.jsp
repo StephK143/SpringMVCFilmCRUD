@@ -1,8 +1,5 @@
-<<<<<<< HEAD:src/main/webapp/updateFilmForm.jsp
-=======
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%> 
->>>>>>> 8230dc46356b68b0ccdb2a9e429ae8c5101a8bea:src/main/webapp/WEB-INF/updateFilmForm.jsp
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <!DOCTYPE html>
@@ -33,11 +30,7 @@
       <input  type="text"  name="filmId" value="${film.filmId}">
       <br>
       <label for="title">Title:</label>
-<<<<<<< HEAD:src/main/webapp/updateFilmForm.jsp
-      <input type="text" name="title" value="${model.title }"/>
-=======
       <input type="text" value="${film.title}" name="title">
->>>>>>> 8230dc46356b68b0ccdb2a9e429ae8c5101a8bea:src/main/webapp/WEB-INF/updateFilmForm.jsp
       <br>
       <label for="description">Description:</label>
       <input type="text" name="description" value="${film.description}">

@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -12,16 +11,28 @@
 <body>
 	<c:choose>
 		<c:when test="${! empty film}">    <!-- Add additional fields to show ALL the goodies -->
+				<h2>Film Title: ${film.title}</h2>
 			<ul>
-				<li>${film.filmId}</li>
-				<li>${film.title}</li>
-				<li>${film.description}</li>
+				<li>Film ID: ${film.filmId}</li>
+				<li>Description: ${film.description}</li>
+				<li>Release Year: ${film.releaseYear}</li>
+				<li>Language: ${film.language}</li>
+				<li>Duration: ${film.duration}</li>
+				<li>Rental Rate: ${film.rentalRate}</li>
+				<li>Length: ${film.length}</li>
+				<li>Replacement Cost: ${film.replaceCost}</li>
+				<li>Rating: ${film.rating}</li>
+				<li>Features: ${film.features}</li>
+				<li>Category: ${film.category}</li>
 			</ul>
-<<<<<<< HEAD
-			<form action="InputFilm.do" method="GET">
-		<a href="updateFilmForm.jsp"><input type="button" value="Edit/Delete"></a>
-		</form>
-=======
+				<h2>Actors in this film:</h2>
+				<c:forEach var="actor" items="${film.actors}">
+							<ul style="list-style-type: none">
+								<li><strong>${actor.firstName} ${actor.lastName}</strong></li>
+							</ul>
+			</c:forEach>
+			<br>
+				
 	<form action="EditFilm.do" method="get">
 		 <input type="hidden" value=${film.filmId } name="filmId"/>
 		 <input type="submit" value="Edit/Delete"/>
@@ -29,7 +40,6 @@
 	
 	</form>
 			
->>>>>>> 8230dc46356b68b0ccdb2a9e429ae8c5101a8bea
 		</c:when>
 		<c:otherwise>
 			<p>${idMessage}</p>
