@@ -6,13 +6,13 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Edit Film</title>
+<title class="head">Edit Film</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
 <br>
-	<a href="index.html"><img src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png" align="right" width= 5% title="Home Page"/></a>
+	<a href="index.html"><img class="home" src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png"  title="Home Page"/></a>
  
 <table>
 	<tr>

@@ -10,9 +10,9 @@
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
-	<a href="index.html"><img
+	<a href="index.html"><img class="home"
 		src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png"
-		align="right" width=5% title="Home Page" /></a>
+		title="Home Page" /></a>
 
 	<br>
 	<h1>Is this the film you want to delete:</h1>
@@ -32,12 +32,12 @@
 					<tr>
 						<td>
 							<ul style="list-style-type: none">
-								<li><span><strong>Description:</strong></span>${film.description}</li>
-								<li><span><strong>Rating:</strong></span> ${film.rating}</li>
-								<li><span><strong>Release Year:</strong></span>${film.releaseYear}</li>
-								<li><span><strong>Language:</strong></span>${film.language}</li>
-								<li><span><strong>Category:</strong></span>${film.category}</li>
-								<li><span><strong>Features:</strong></span>${film.features}</li>
+								<li><span>Description:</span>${film.description}</li>
+								<li><span>Rating:</span> ${film.rating}</li>
+								<li><span>Release Year:</span>${film.releaseYear}</li>
+								<li><span>Language:</span>${film.language}</li>
+								<li><span>Category:</span>${film.category}</li>
+								<li><span>Features:</span>${film.features}</li>
 							</ul>
 						</td>
 						<td>

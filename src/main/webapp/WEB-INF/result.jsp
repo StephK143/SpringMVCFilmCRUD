@@ -10,7 +10,7 @@
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
-	<a href="index.html"><img src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png" align="right" width= 5% title="Home Page"/></a>
+	<a href="index.html"><img  class="home" src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png" align="right" width= 5% title="Home Page"/></a>
 
 	<c:choose>
 		<c:when test="${! empty film}">
@@ -70,7 +70,7 @@
 						<td>
 							<form action="ConfirmDelete.do" method="get">
 								<input type="hidden" value=${film.filmId } name="filmId" /> 
-								<input type="submit" value="Delete Film" />
+								<input class="danger" type="submit" value="Delete Film" />
 							</form>
 						</td>
 						<td>

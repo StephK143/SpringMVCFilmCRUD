@@ -1,35 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
 <title>TagLibraries</title>
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
-	<h1>Movie Maven Film Catalog</h1>
-	<br>
-	<table>
-		<thead>
-			<tr>
-				<th>Search for film by ID</th>
-				<th>Search for film by keyword</th>
-				<th>Add film to inventory</th>
-				<th>Add Actor</th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
+		<br>
+		<table>
+			<thead>
+				<tr>
+				<h1 class="head">Movie Maven Film Catalog</h1>
+				</tr>
+				<tr>
+					<th><a href="idSearchForm.html" class="title">Search for film by ID</a></th>
+					<th><a href="keywordSearchForm.html" class="title"> Search for film by keyword </a></th>
+					<th><a href="addFilmForm.html" class="title"> Add film to inventory</a></th>
+					<th> <a href="addActorForm.html" class="title"> Add Actor</a></th>
+
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+				<div class="button-container">
 				<td><a href="idSearchForm.html"><img
-						src="https://cdn0.iconfinder.com/data/icons/movie-and-video-2/512/search-video-files-movie-searching-512.png"
-						width=60% title="Search for film by ID" /></a></td>
-				<td><a href="keywordSearchForm.html"><img
-						src="https://cdn1.iconfinder.com/data/icons/powerful-seo-icon-set/512/keyword_1__.png"
-						width=60% title="Search for film by
+							src="https://cdn0.iconfinder.com/data/icons/movie-and-video-2/512/search-video-files-movie-searching-512.png"
+							width=60% class="button2" title="Search for film by ID" /></a></td>
+
+					<td><a href="keywordSearchForm.html"><img
+							src="https://cdn1.iconfinder.com/data/icons/powerful-seo-icon-set/512/keyword_1__.png"
+							class="button2" width=60%
+							title="Search for film by
 						keyword" /></a></td>
-				<td><a href="addFilmForm.html"><img src="https://cdn2.iconfinder.com/data/icons/interactive-shadow-pack/100/_-5-512.png"
-						width=60% title="Add film to inventory" /></a></td>
-				<td><a href="addActorForm.html"><img src="https://i.pinimg.com/originals/d2/ea/d8/d2ead876ae76ba7147f68e7d2417c5f3.png" width=60% title="Add actor"/></a></td>
+					<td><a href="addFilmForm.html"><img
+							src="https://cdn2.iconfinder.com/data/icons/interactive-shadow-pack/100/_-5-512.png"
+							width=60% class="button2" title="Add film to inventory" /></a>
+						</td>
+					<td><a href="addActorForm.html"><img
+							src="https://i.pinimg.com/originals/d2/ea/d8/d2ead876ae76ba7147f68e7d2417c5f3.png"
+							width=60% class="button2" title="Add actor" /></a></td>
+				</div>
 			</tr>
-		</tbody>
-	</table>
+			</tbody>
+		</table>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </body>
 </html>
