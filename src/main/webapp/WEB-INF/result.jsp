@@ -17,9 +17,19 @@
 				<li>${film.title}</li>
 				<li>${film.description}</li>
 			</ul>
+<<<<<<< HEAD
 			<form action="InputFilm.do" method="GET">
 		<a href="updateFilmForm.jsp"><input type="button" value="Edit/Delete"></a>
 		</form>
+=======
+	<form action="EditFilm.do" method="get">
+		 <input type="hidden" value=${film.filmId } name="filmId"/>
+		 <input type="submit" value="Edit/Delete"/>
+		 
+	
+	</form>
+			
+>>>>>>> 8230dc46356b68b0ccdb2a9e429ae8c5101a8bea
 		</c:when>
 		<c:otherwise>
 			<p>${idMessage}</p>
