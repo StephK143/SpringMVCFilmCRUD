@@ -12,7 +12,8 @@
 </head>
 <body>
 <br>
-
+<a href="index.html"><input type="button" value="Take me back to the home page"></a>
+ 
 <table>
 <tr>
 <td width=100%>
@@ -63,13 +64,7 @@
     <br>
     <br>
 		<a href="deleteFilmForm.jsp"><input type="button" value="Delete this film (you must know the film Id for this action)"></a>
-<!--    </td>
-    <td width=80%>
-    <form action="DeleteFilm.do" method="POST">
-		<a href="deleteFilmForm.html"><input type="button" value="Edit/Delete"></a>
-      <input type="text" name="title" value="${film.title}"/>
-    </form>
-    </td> -->
+
       </tr>
  
     </table>

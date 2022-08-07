@@ -35,29 +35,32 @@ public class FilmController {
 	}
 	
 	
-	@RequestMapping(path = "UpdateFilm.do", method = RequestMethod.GET)
+	@RequestMapping(path = "UpdateFilm.do", method = RequestMethod.POST)
 	public ModelAndView updateFilm(Film film, Model model, RedirectAttributes redir, int filmId, @RequestParam("filmId") String id) {
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("film", film);
-		mv.setViewName("WEB-INF/result.jsp");
-		System.out.println("***************************** film: " + film);
-		System.out.println("****************************  filmId: " + filmId);
-//		model.addAttribute("filmEdit", fd.updateFilm(film));
-//		model.addAttribute("editMessage", "Film was successfully edited.");
-//		model.addAttribute("editFail", "There was a problem updating the film.");
-		return mv; // placeholder page until we write .jsp
+		mv.addObject("filmEdit", fd.updateFilm(film));
+		model.addAttribute("editMessage", "Film was successfully updated.");
+		model.addAttribute("editFail", "There was a problem updating the film.");
+		mv.setViewName("result");
+		return mv; 
 	}
+	
 	@RequestMapping(path = "EditFilm.do", method = RequestMethod.GET)
 	public ModelAndView editFilm(@RequestParam("filmId") String filmId) {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("updateFilmForm");
 		Film film = fd.findFilmById(Integer.parseInt(filmId));
 		mv.addObject("film", film);
-		
-//		model.addAttribute("filmDelete", fd.deleteFilm(film));
-//		model.addAttribute("deleteMessage", "Film was successfully deleted.");
-//		model.addAttribute("deleteFail", "There was a problem deleting the film.");
-		return mv; // placeholder page until we write .jsp   -----redirect to another form using model object
+		return mv; 
+	}
+	
+	@RequestMapping(path = "ConfirmDelete.do", method = RequestMethod.GET)
+	public ModelAndView confirmDelete(@RequestParam("filmId") int filmId) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("../deleteFilmForm");
+		Film film = fd.findFilmById(filmId);
+		mv.addObject("film", film);
+		return mv; 
 	}
 	
 	@RequestMapping(path = "DeleteFilm.do", method = RequestMethod.POST)
@@ -65,29 +68,29 @@ public class FilmController {
 		model.addAttribute("filmDelete", fd.deleteFilm(film));
 		model.addAttribute("deleteMessage", "Film was successfully deleted.");
 		model.addAttribute("deleteFail", "There was a problem deleting the film.");
-		return "result"; // placeholder page until we write .jsp   -----redirect to another form using model object
+		return "result";
 	}
 
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "filmId")
 	public String getFilmById(@RequestParam("filmId") int filmId, Model model) {
 		model.addAttribute("film", fd.findFilmById(filmId));
 		model.addAttribute("idMessage", "No film found");
-		return "result"; // placeholder page until we write .jsp
+		return "result"; 
 	}
 
 	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "keyword")
 	public String getStateByAbbr(String keyword, Model model) {
 		model.addAttribute("filmKeyword", fd.findFilmByKeyword(keyword));
-		model.addAttribute("kwPrompt", "To edit/delete a film in this list, search by the film id.");  //Can we automate filmID data transfer
+		model.addAttribute("kwPrompt", "To edit/delete a film in this list, search by the film id.");  
 		model.addAttribute("kwMessage", "There are no films that match your search");
-		return "result"; // placeholder page until we write .jsp
+		return "result";
 	}
 	
-	@RequestMapping(path = "InputFilm.do", method = RequestMethod.GET, params = "filmId")
-	public String inputFilmToEditor(@RequestParam("filmId") int filmId, Model model) {
-		model.addAttribute("film", fd.findFilmById(filmId));
-		model.addAttribute("idMessage", "No film found");
-		return "updateFilmForm"; // placeholder page until we write .jsp
-	}
+//	@RequestMapping(path = "InputFilm.do", method = RequestMethod.GET, params = "filmId")
+//	public String inputFilmToEditor(@RequestParam("filmId") int filmId, Model model) {
+//		model.addAttribute("film", fd.findFilmById(filmId));
+//		model.addAttribute("idMessage", "No film found");
+//		return "updateFilmForm"; 
+//	}
 	
 }
