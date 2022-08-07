@@ -37,7 +37,6 @@ public class FilmDAOImpl implements FilmDAO {
 			String sql = "SELECT * FROM film f JOIN film_category fc ON f.id = fc.film_id JOIN category c ON fc.category_id = c.id JOIN language l ON f.language_id = l.id WHERE f.id = ?";
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.setInt(1, filmId);
-			System.out.println(stmt);
 			ResultSet filmResult = stmt.executeQuery();
 
 			if (filmResult.next()) {
@@ -49,7 +48,6 @@ public class FilmDAOImpl implements FilmDAO {
 						filmResult.getString("rating"), filmResult.getString("special_features"),
 						filmResult.getString("c.name"), findActorsByFilmId(filmId), findInventoryByFilmId(filmId));
 			}
-			System.out.println(film);
 			filmResult.close();
 			stmt.close();
 			conn.close();
