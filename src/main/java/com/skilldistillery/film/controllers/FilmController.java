@@ -16,8 +16,6 @@ import com.skilldistillery.film.entities.Film;
 @Controller
 public class FilmController {
 
-	// Still need to add mappings for other methods/functions
-
 	@Autowired
 	private FilmDAO fd;
 
@@ -29,20 +27,49 @@ public class FilmController {
 		this.fd = fd;
 	}
 
-	@RequestMapping(path = "NewFilm.do", method = RequestMethod.POST)
-	public String createFilm(Film film, Model model) {
-		model.addAttribute("film", fd.createFilm(film));
+	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "filmId")
+	public String getFilmById(@RequestParam("filmId") int filmId, Model model) {
+		model.addAttribute("film", fd.findFilmById(filmId));
+		model.addAttribute("idMessage", "No film found");
 		return "result"; 
+	}
+	
+	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "keyword")
+	public String getStateByAbbr(String keyword, Model model) {
+		model.addAttribute("filmKeyword", fd.findFilmByKeyword(keyword));
+		model.addAttribute("kwMessage", "There are no films that match your search");
+		return "result";
 	}
 
-	@RequestMapping(path = "NewActor.do", method = RequestMethod.POST)
-	public String createActor(Actor actor, @RequestParam("filmTitle") String filmTitle, Model model) {
-		Actor newActor = fd.createActor(actor, filmTitle);
-		model.addAttribute("actor", newActor);
-		model.addAttribute("actorSize", (fd.findFilmsByActorId(newActor.getId())).size());
-		model.addAttribute("badActor", "Actor couldn't be added");
-		return "result"; 
+	@RequestMapping(path = "NewFilm.do", method = RequestMethod.POST)
+	public String createFilm(Film film, Model model, RedirectAttributes redir) {
+		fd.createFilm(film);
+		redir.addFlashAttribute("film", film);    
+		return "redirect:filmAdded.do"; 
 	}
+	
+	  @RequestMapping(path = "filmAdded.do", method = RequestMethod.GET)
+	  public ModelAndView created(Film film) {
+		  ModelAndView mv = new ModelAndView();
+		    mv.setViewName("result");
+		  return mv;
+	  }
+
+	@RequestMapping(path = "NewActor.do", method = RequestMethod.POST)
+	public String createActor(Actor actor, @RequestParam("filmTitle") String filmTitle, Model model, RedirectAttributes redir) {
+		Actor newActor = fd.createActor(actor, filmTitle);
+		redir.addFlashAttribute("actor", newActor);
+		redir.addFlashAttribute("actorSize", (fd.findFilmsByActorId(newActor.getId())).size());
+		redir.addFlashAttribute("badActor", "Actor couldn't be added");
+		return "redirect:actorAdded.do"; 
+	}
+	
+	  @RequestMapping(path = "actorAdded.do", method = RequestMethod.GET)
+	  public ModelAndView created(Actor actor) {
+		  ModelAndView mv = new ModelAndView();
+		    mv.setViewName("result");
+		  return mv;
+	  }
 	
 	
 	@RequestMapping(path = "UpdateFilm.do", method = RequestMethod.POST)
@@ -73,15 +100,6 @@ public class FilmController {
 		return mv; 
 	}
 	
-	@RequestMapping(path = "ConfirmDelete.do", method = RequestMethod.GET)
-	public ModelAndView confirmDelete(@RequestParam("filmId") int filmId) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("../deleteFilmForm");
-		Film film = fd.findFilmById(filmId);
-		mv.addObject("film", film);
-		return mv; 
-	}
-	
 	@RequestMapping(path = "DeleteFilm.do", method = RequestMethod.POST)
 	public String deleteFilm(Film film, Model model) {
 		model.addAttribute("filmDelete", fd.deleteFilm(film));
@@ -90,17 +108,13 @@ public class FilmController {
 		return "result";
 	}
 
-	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "filmId")
-	public String getFilmById(@RequestParam("filmId") int filmId, Model model) {
-		model.addAttribute("film", fd.findFilmById(filmId));
-		model.addAttribute("idMessage", "No film found");
-		return "result"; 
+	@RequestMapping(path = "ConfirmDelete.do", method = RequestMethod.GET)
+	public ModelAndView confirmDelete(@RequestParam("filmId") int filmId) {
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("../deleteFilmForm");
+		Film film = fd.findFilmById(filmId);
+		mv.addObject("film", film);
+		return mv; 
 	}
 
-	@RequestMapping(path = "GetFilm.do", method = RequestMethod.GET, params = "keyword")
-	public String getStateByAbbr(String keyword, Model model) {
-		model.addAttribute("filmKeyword", fd.findFilmByKeyword(keyword));
-		model.addAttribute("kwMessage", "There are no films that match your search");
-		return "result";
-	}
 }

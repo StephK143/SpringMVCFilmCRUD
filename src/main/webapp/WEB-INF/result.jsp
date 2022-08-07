@@ -47,7 +47,7 @@
 								<li><span><strong>Rental Rate:</strong></span>
 									${film.rentalRate}</li>
 								<li><span><strong>Duration:</strong></span>
-									${film.duration}</li>
+									${film.duration} days</li>
 								<li><span><strong>Replacement Cost:</strong></span>
 									${film.replaceCost}</li>
 							</ul>
