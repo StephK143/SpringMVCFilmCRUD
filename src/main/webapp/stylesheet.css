@@ -1,15 +1,23 @@
 @charset "UTF-8";
 
-
-
 .forms {
 	text-align: center;
 	margin: auto;
-  width: 50%;
-  border: 3px solid green;
-  padding: 10px;
+	width: 50%;
+	border: 3px solid green;
+	padding: 10px;
 }
 
 .danger {
-	color:white; width: 100px; background-color: red;
+	color: white;
+	width: 500px;
+	height: 50px;
+	background-color: red;
+	text-align: center;
+	vertical-align: middle;
+	
+	horizontal-align: middle;
+	font-size: 30px;
+	padding: 20px;
+	border-radius: 15px;
 }

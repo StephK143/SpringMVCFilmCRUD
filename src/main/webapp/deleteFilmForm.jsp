@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Delete Film</title>
+<link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
 					<a href="index.html"><input type="button" value="Take me back to the home page"></a>

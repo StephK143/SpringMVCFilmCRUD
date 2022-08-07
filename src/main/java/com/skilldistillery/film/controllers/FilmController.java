@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.skilldistillery.film.database.FilmDAO;
+import com.skilldistillery.film.entities.Actor;
 import com.skilldistillery.film.entities.Film;
 
 @Controller
@@ -31,7 +32,15 @@ public class FilmController {
 	@RequestMapping(path = "NewFilm.do", method = RequestMethod.POST)
 	public String createFilm(Film film, Model model) {
 		model.addAttribute("film", fd.createFilm(film));
-		return "result"; // placeholder page until we write .jsp
+		return "result"; 
+	}
+
+	@RequestMapping(path = "NewActor.do", method = RequestMethod.POST)
+	public String createActor(Actor actor, @RequestParam("filmTitle") String filmTitle, Model model) {
+		model.addAttribute("actor", fd.createActor(actor, filmTitle));
+		model.addAttribute("badActor", "Actor couldn't be added");
+
+		return "result"; 
 	}
 	
 	
@@ -51,6 +60,14 @@ public class FilmController {
 		mv.setViewName("updateFilmForm");
 		Film film = fd.findFilmById(Integer.parseInt(filmId));
 		mv.addObject("film", film);
+		return mv; 
+	}
+
+	@RequestMapping(path = "Inventory.do", method = RequestMethod.GET)
+	public ModelAndView inventory(@RequestParam("filmId") String filmId) {
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("inventory", fd.findInventoryByFilmId(Integer.parseInt(filmId)));
+		mv.setViewName("result");
 		return mv; 
 	}
 	
@@ -85,12 +102,4 @@ public class FilmController {
 		model.addAttribute("kwMessage", "There are no films that match your search");
 		return "result";
 	}
-	
-//	@RequestMapping(path = "InputFilm.do", method = RequestMethod.GET, params = "filmId")
-//	public String inputFilmToEditor(@RequestParam("filmId") int filmId, Model model) {
-//		model.addAttribute("film", fd.findFilmById(filmId));
-//		model.addAttribute("idMessage", "No film found");
-//		return "updateFilmForm"; 
-//	}
-	
 }

@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Films</title>
+<link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
 	<a href="index.html"><input type="button"
@@ -14,7 +15,6 @@
 
 	<c:choose>
 		<c:when test="${! empty film}">
-			<!-- Add additional fields to show ALL the goodies -->
 			<h2>Film Title: ${film.title}</h2>
 			<ul>
 				<li>Film ID: ${film.filmId}</li>
@@ -46,6 +46,11 @@
 			<form action="ConfirmDelete.do" method="get">
 				<input type="hidden" value=${film.filmId } name="filmId" /> <input
 					type="submit" value="Delete Film" />
+			</form>
+
+			<form action="Inventory.do" method="get">
+				<input type="hidden" value=${film.filmId } name="filmId" /> <input
+					type="submit" value="Show Me Inventory By Store" />
 			</form>
 
 		</c:when>
@@ -103,6 +108,57 @@
 		<c:otherwise>
 			<p>${deleteFail}</p>
 		</c:otherwise>
+	</c:choose>
+	
+	<c:choose>
+		<c:when test="${! empty actor}">
+			<h2>Actor Added:</h2>
+			<ul>
+				<li>Actor Name: ${actor.firstName} ${actor.lastName}</li>
+			</ul>
+			<br>
+
+<!-- 			<form action="EditActor.do" method="get">
+				<input type="hidden" value=${film.filmId } name="filmId" /> <input
+					type="submit" value="Edit Film" />
+
+			</form>
+
+			<form action="ConfirmDelete.do" method="get">
+				<input type="hidden" value=${film.filmId } name="filmId" /> <input
+					type="submit" value="Delete Film" />
+			</form> -->
+
+		</c:when>
+		<c:otherwise>
+			<p>${badActor}</p>
+		</c:otherwise>
+	</c:choose>
+	
+	<c:choose>
+	<c:when test="${! empty inventory}">
+	<table class="inventoryTable" id="invTable">
+	<thead>
+	<tr>
+	<th>Title</th>
+	<th>Inventory ID</th>
+	<th>Condition</th>
+	<th>Store Address</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+		<c:forEach var="copy" items="${inventory}">
+		<tr>
+					<td><strong>${copy.filmTitle}</strong></td>
+					<td><strong>${copy.invId}</strong></td>
+					<td><strong>${copy.condition}</strong></td>
+					<td><strong>${copy.address}</strong></td>
+				</tr>
+			</c:forEach>
+	</tbody>
+	</table>
+	</c:when>
 	</c:choose>
 
 </body>
