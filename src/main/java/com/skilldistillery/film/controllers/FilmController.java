@@ -43,8 +43,7 @@ public class FilmController {
 
 	@RequestMapping(path = "NewFilm.do", method = RequestMethod.POST)
 	public String createFilm(Film film, Model model, RedirectAttributes redir) {
-		fd.createFilm(film);
-		redir.addFlashAttribute("film", film);    
+		redir.addFlashAttribute("film", fd.createFilm(film));    
 		return "redirect:filmAdded.do"; 
 	}
 	
@@ -71,26 +70,64 @@ public class FilmController {
 		  return mv;
 	  }
 	
-	
+	  @RequestMapping(path = "EditFilm.do", method = RequestMethod.GET)
+	  public ModelAndView editFilm(@RequestParam("filmId") String filmId) {
+		  ModelAndView mv = new ModelAndView();
+		  mv.setViewName("updateFilmForm");
+		  Film film = fd.findFilmById(Integer.parseInt(filmId));
+		  mv.addObject("film", film);
+		  return mv; 
+	  }
+
 	@RequestMapping(path = "UpdateFilm.do", method = RequestMethod.POST)
-	public ModelAndView updateFilm(Film film, Model model, RedirectAttributes redir, int filmId, @RequestParam("filmId") String id) {
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("filmEdit", fd.updateFilm(film));
-		mv.addObject("film", fd.findFilmById(film.getFilmId()));
-		model.addAttribute("editMessage", "Film was successfully updated.");
-		model.addAttribute("editFail", "There was a problem updating the film.");
-		mv.setViewName("result");
-		return mv; 
+	public String updateFilm(Film film, Model model, RedirectAttributes redir, int filmId, @RequestParam("filmId") String id) {
+		
+		redir.addFlashAttribute("filmEdit", fd.updateFilm(film));
+		redir.addFlashAttribute("film", fd.findFilmById(film.getFilmId()));
+		redir.addFlashAttribute("editMessage", "Film was successfully updated.");
+		redir.addFlashAttribute("editFail", "There was a problem updating the film.");
+		return "redirect:filmUpdated.do"; 
 	}
 	
-	@RequestMapping(path = "EditFilm.do", method = RequestMethod.GET)
-	public ModelAndView editFilm(@RequestParam("filmId") String filmId) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("updateFilmForm");
-		Film film = fd.findFilmById(Integer.parseInt(filmId));
-		mv.addObject("film", film);
-		return mv; 
+	  @RequestMapping(path = "filmUpdated.do", method = RequestMethod.GET)
+	  public ModelAndView updated(Film film) {
+		  ModelAndView mv = new ModelAndView();
+		    mv.setViewName("result");
+		  return mv;
+	  }
+	
+	  @RequestMapping(path = "ConfirmDelete.do", method = RequestMethod.GET)
+	  public ModelAndView confirmDelete(@RequestParam("filmId") int filmId) {
+		  ModelAndView mv = new ModelAndView();
+		  mv.setViewName("../deleteFilmForm");
+		  Film film = fd.findFilmById(filmId);
+		  mv.addObject("film", film);
+		  return mv; 
+	  }
+
+	
+//	@RequestMapping(path = "DeleteFilm.do", method = RequestMethod.POST)
+//	public String deleteFilm(Film film, Model model) {
+//		model.addAttribute("filmDelete", fd.deleteFilm(film));
+//		model.addAttribute("deleteMessage", "Film was successfully deleted.");
+//		model.addAttribute("deleteFail", "There was a problem deleting the film.");
+//		return "result";
+//	}
+	@RequestMapping(path = "DeleteFilm.do", method = RequestMethod.POST)
+	public String deleteFilm(Film film, Model model, RedirectAttributes redir) {
+		redir.addFlashAttribute("filmDelete", fd.deleteFilm(film));
+		redir.addFlashAttribute("deleteMessage", "Film was successfully deleted.");
+		redir.addFlashAttribute("deleteFail", "There was a problem deleting the film.");
+		return "redirect:filmDeleted.do";
 	}
+	
+	  @RequestMapping(path = "filmDeleted.do", method = RequestMethod.GET)
+	  public ModelAndView deleted(Film film) {
+		  ModelAndView mv = new ModelAndView();
+		    mv.setViewName("result");
+		  return mv;
+	  }
+
 
 	@RequestMapping(path = "Inventory.do", method = RequestMethod.GET)
 	public ModelAndView inventory(@RequestParam("filmId") String filmId) {
@@ -99,22 +136,4 @@ public class FilmController {
 		mv.setViewName("result");
 		return mv; 
 	}
-	
-	@RequestMapping(path = "DeleteFilm.do", method = RequestMethod.POST)
-	public String deleteFilm(Film film, Model model) {
-		model.addAttribute("filmDelete", fd.deleteFilm(film));
-		model.addAttribute("deleteMessage", "Film was successfully deleted.");
-		model.addAttribute("deleteFail", "There was a problem deleting the film.");
-		return "result";
-	}
-
-	@RequestMapping(path = "ConfirmDelete.do", method = RequestMethod.GET)
-	public ModelAndView confirmDelete(@RequestParam("filmId") int filmId) {
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("../deleteFilmForm");
-		Film film = fd.findFilmById(filmId);
-		mv.addObject("film", film);
-		return mv; 
-	}
-
 }
