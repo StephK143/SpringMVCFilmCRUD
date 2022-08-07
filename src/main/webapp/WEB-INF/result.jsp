@@ -16,7 +16,12 @@
 				<li>${film.title}</li>
 				<li>${film.description}</li>
 			</ul>
-		<a href="updateFilmForm.jsp"><input type="button" value="Edit/Delete"></a>
+	<form action="EditFilm.do" method="get">
+		 <input type="hidden" value=${film.filmId } name="filmId"/>
+		 <input type="submit" value="Edit/Delete"/>
+		 
+	
+	</form>
 			
 		</c:when>
 		<c:otherwise>
