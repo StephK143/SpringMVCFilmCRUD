@@ -38,8 +38,6 @@
 				<table>
 					<tr>
 						<td align=left>
-							<!-- 			<h2 align=left><a href="presidentInfo?termNumber=${prez.termNumber}">${prez.firstName} ${prez.middleName} ${prez.lastName}</a></h2> 
-								<img src="images/${prez.termNumber}.jpg" width="100%" height="auto" /> -->
 						</td>
 						<td align=left width=80%>
 							<ul style="list-style-type: none">
@@ -48,7 +46,6 @@
 									</h3></li>
 								<li><h3>
 										<strong>Description: </strong>${film.description}</h3></li>
-								<!-- 					<li><h3><strong>Reason For Leaving Office: </strong>${prez.whyLeftOffice}</h3></li> -->
 							</ul>
 						</td>
 					</tr>

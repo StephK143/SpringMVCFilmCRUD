@@ -13,7 +13,6 @@
 <body>
 <br>
   
- film  ${film.filmId }
 <table>
 <tr>
 <td width=100%>
