@@ -36,25 +36,25 @@
       <input type="text" name="description" value="${film.description}">
       <br>
       <label for="releaseYear">Year film was released:</label>
-      <input type="text" name="releaseYear" value="${releaseYear}">
+      <input type="text" name="releaseYear" value="${film.releaseYear}">
       <br>
       <label for="duration">Duration of rental:</label>
-      <input type="number" name="duration">
+      <input type="number" name="duration" value="${film.duration}">
       <br>
       <label for="rentalRate">Rental Rate:</label>
-      <input type="text" name="rentalRate">
+      <input type="text" name="rentalRate" value="${film.rentalRate}">
       <br>
       <label for="length">Length:</label>
-      <input type="text" name="length">
+      <input type="text" name="length" value="${film.length}">
       <br>
       <label for="replaceCost">Replacement Cost:</label>
-      <input type="text" name="replaceCost">
+      <input type="text" name="replaceCost" value="${film.replaceCost}">
       <br>
       <label for="rating">Rating:</label>
-      <input type="text" name="rating">
+      <input type="text" name="rating" value="${film.rating}">
       <br>
       <label for="category">Film Category:</label>
-      <input type="text" name="category">
+      <input type="text" name="category" value="${film.category}">
       <br>
       <input type="submit" value="Edit Film">
      
