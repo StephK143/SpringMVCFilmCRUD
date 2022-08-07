@@ -35,6 +35,7 @@ public class FilmController {
 		return "result"; // placeholder page until we write .jsp
 	}
 	
+	
 	@RequestMapping(path = "UpdateFilm.do", method = RequestMethod.GET)
 	public ModelAndView updateFilm(Film film, Model model, RedirectAttributes redir, int filmId, @RequestParam("filmId") String id) {
 		ModelAndView mv = new ModelAndView();
