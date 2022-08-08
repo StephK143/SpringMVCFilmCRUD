@@ -19,7 +19,7 @@
 		<c:when test="${! empty film}">
 			<h2 class="head">Film Title: ${film.title}</h2>
 			<table id="filmDetails">
-				<thead class="head">
+				<thead class="head2">
 					<tr>
 						<th>Film Details</th>
 						<th>Rental Details</th>
@@ -88,8 +88,8 @@
 						<td>
 							<form action="Inventory.do" method="get">
 								<input type="hidden" value=${film.filmId } name="filmId" /> <input
-									class="button4" type="submit"
-									value="Show Me Inventory By Store" />
+									class="button3" type="submit"
+									value="Show Inventory" />
 							</form>
 						</td>
 					</tr>
@@ -97,7 +97,7 @@
 			</table>
 		</c:when>
 		<c:otherwise>
-			<h3>${idMessage}</h3>
+			<h1>${idMessage}</h1>
 		</c:otherwise>
 	</c:choose>
 
@@ -142,7 +142,7 @@
 							<td>
 								<form action="GetFilm.do" method="get">
 									<input type="hidden" value=${film.filmId } name="filmId" /> <input
-										class="button4" type="submit" value="List all film details" />
+										class="button3" type="submit" value="Film details" />
 								</form>
 
 							</td>
@@ -151,7 +151,7 @@
 			</table>
 		</c:when>
 		<c:otherwise>
-			<h3>${kwMessage}</h3>
+			<h1>${kwMessage}</h1>
 		</c:otherwise>
 	</c:choose>
 	<c:choose>
@@ -190,7 +190,7 @@
 			<h2 class="head">Copies Available in Store</h2>
 			<table id="invTable">
 				<thead>
-					<tr class="head">
+					<tr class="head2">
 						<th>Title</th>
 						<th>Inventory ID</th>
 						<th>Condition</th>

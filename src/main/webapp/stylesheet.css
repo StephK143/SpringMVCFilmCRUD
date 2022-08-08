@@ -9,11 +9,13 @@ table {
 
 input[type="text"], textarea {
 	background-color: #cccccc;
+	font-size: 20px;
 	border-radius: 20;
 }
 
 input[type="number"], textarea {
 	background-color: #cccccc;
+	font-size: 20px;
 	border-radius: 20;
 }
 
@@ -41,14 +43,29 @@ body {
 	text-align: center;
 	font-weight: bold;
 	text-shadow: 3px 3px 3px #444258;
-	padding: 100px;
+	padding: 25px;
 }
+
+.head2 {
+	color: #160F54;
+	text-shadow: 3px 3px 3px #444258;
+	font-weight: bold;
+	padding: 20px;
+	white-space: nowrap;
+	font-size: 40px;
+	text-align: left;
+	font-weight: bold;
+	text-shadow: 3px 3px 3px #444258;
+	padding: 25px;
+}
+
 
 .title {
 	text-align: center;
+	font-size: 35px;
 	color: #160F54;
 	text-decoration: none;
-	padding: 50px;
+	padding: 10px;
 }
 
 .forms {
@@ -57,13 +74,12 @@ body {
 	margin: auto;
 	width: 50%;
 	border: 10px #160F54;
-	padding: 100px;
+	padding: 25px;
 	text-align: center;
 	border-radius: 25;
 }
 
 .button2 {
-	vertical-align: center;
 	line-height: 10px;
 	color: white;
 	width: 300px;
@@ -72,7 +88,7 @@ body {
 	text-align: center;
 	vertical-align: middle;
 	font-size: 30px;
-	padding: 20px;
+	padding: 10px;
 	border-radius: 50%;
 }
 
@@ -80,7 +96,7 @@ body {
 	vertical-align: center;
 	line-height: 10px;
 	color: white;
-	width: 200px;
+	width: 250px;
 	height: 50px;
 	background-color: #160F54;
 	text-align: center;
@@ -93,7 +109,7 @@ body {
 	vertical-align: center;
 	line-height: 10px;
 	color: white;
-	width: 250px;
+	width: 200px;
 	height: 50px;
 	background-color: #160F54;
 	text-align: center;
@@ -151,5 +167,6 @@ body {
 
 #dropdown {
 	background-color: #cccccc;
+	font-size: 20px;
 	border-radius: 20;
 }
