@@ -108,7 +108,7 @@
 					<c:forEach var="film" items="${filmKeyword}">
 						<tr>
 							<td><strong>${film.title}</strong></td>
-							<tdclass="wrap-text"><strong>${film.description}</strong></td>
+							<td class="wrap-text"><strong>${film.description}</strong></td>
 							<td><strong>${film.releaseYear}</strong></td>
 							<td><strong>${film.language}</strong></td>
 							<td><strong>${film.rentalRate}</strong></td>
