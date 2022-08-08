@@ -19,13 +19,13 @@ public class Film {
 	private String features;
 	private String category;
 
-	
-	public Film() {	}
+	public Film() {
+	}
 
-	
-	public Film(int filmId, String title, String description, int release_year, int langId, String language, int duration, double rentalRate,
-			 int length, double replaceCost, String rating, String features, String category, List<Actor> actors, List<InventoryItem> availableCopies) {
-	
+	public Film(int filmId, String title, String description, int release_year, int langId, String language,
+			int duration, double rentalRate, int length, double replaceCost, String rating, String features,
+			String category, List<Actor> actors, List<InventoryItem> availableCopies) {
+
 		this.filmId = filmId;
 		this.title = title;
 		this.description = description;
@@ -179,11 +179,11 @@ public class Film {
 				&& Double.doubleToLongBits(replaceCost) == Double.doubleToLongBits(other.replaceCost)
 				&& Objects.equals(title, other.title);
 	}
-	
+
 	public String printActors() {
 		String actorList = "";
 		for (int i = 0; i < actors.size(); i++) {
-			if (i == actors.size() -1) {
+			if (i == actors.size() - 1) {
 				actorList += actors.get(i);
 				break;
 			}
@@ -191,27 +191,28 @@ public class Film {
 		}
 		return actorList;
 	}
-	
+
 	public String printInventory() {
 		String inventory = "";
 		int counter = 1;
 		for (InventoryItem copy : availableCopies) {
 			inventory += counter + ". " + copy + "\n";
 			counter++;
-			}
+		}
 		return inventory;
 	}
 
 	public String fullPrint() {
-		return "Title: " + title + "\nRelease Year: " + releaseYear + "\nDescription: " + description + 
-				"\t\tLanguage: " + language +"\t\tDuration: " + duration + "\t\tLength: " + length + "\nRental Rate: $" + rentalRate
-				+ "\t\tReplacement Cost: $" + replaceCost + "\nRating: " + rating + "\t\tCategory: " + category + "\t\tFilm ID: " + filmId + "\nFeatures: "
-				+ features + "\nActors in film: " + printActors() + "\n\nList of available rentals and their condition:\n" + printInventory();
+		return "Title: " + title + "\nRelease Year: " + releaseYear + "\nDescription: " + description + "\t\tLanguage: "
+				+ language + "\t\tDuration: " + duration + "\t\tLength: " + length + "\nRental Rate: $" + rentalRate
+				+ "\t\tReplacement Cost: $" + replaceCost + "\nRating: " + rating + "\t\tCategory: " + category
+				+ "\t\tFilm ID: " + filmId + "\nFeatures: " + features + "\nActors in film: " + printActors()
+				+ "\n\nList of available rentals and their condition:\n" + printInventory();
 	}
 
 	@Override
 	public String toString() {
-		return "Title: " + title + "\nRelease Year: " + releaseYear + "\tRating: " + rating + "\tLanguage: " + language + "\tFilm ID: " + filmId +
-				"\nDescription: " + description + "\nActors in film: " + printActors();		
+		return "Title: " + title + "\nRelease Year: " + releaseYear + "\tRating: " + rating + "\tLanguage: " + language
+				+ "\tFilm ID: " + filmId + "\nDescription: " + description + "\nActors in film: " + printActors();
 	}
 }

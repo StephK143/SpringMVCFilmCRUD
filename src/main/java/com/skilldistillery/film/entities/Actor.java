@@ -9,10 +9,10 @@ public class Actor {
 	private int id;
 	private String firstName;
 	private String lastName;
-	
+
 	public Actor() {
 	}
-	
+
 	public Actor(int id, String firstName, String lastName) {
 		this.id = id;
 		this.firstName = firstName;
@@ -22,7 +22,7 @@ public class Actor {
 	public List<Film> getFilms() {
 		return films;
 	}
-	
+
 	public void setFilms(List<Film> films) {
 		this.films = films;
 	}
@@ -50,7 +50,7 @@ public class Actor {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		return Objects.hash(firstName, id, lastName);
