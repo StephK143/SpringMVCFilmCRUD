@@ -7,11 +7,10 @@ public class InventoryItem {
 	private int invId;
 	private String condition;
 	private String address;
-	
-	
-	public InventoryItem() {}
 
-	
+	public InventoryItem() {
+	}
+
 	public InventoryItem(String filmTitle, int invId, String condition, String address) {
 		this.filmTitle = filmTitle;
 		this.invId = invId;
@@ -22,7 +21,7 @@ public class InventoryItem {
 	public String getFilmTitle() {
 		return filmTitle;
 	}
-	
+
 	public void setFilmTitle(String filmTitle) {
 		this.filmTitle = filmTitle;
 	}
@@ -71,6 +70,6 @@ public class InventoryItem {
 
 	@Override
 	public String toString() {
-		return filmTitle + "\tItem #: "+ invId + "\t" + condition + "\tStore Location:   " + address;
+		return filmTitle + "\tItem #: " + invId + "\t" + condition + "\tStore Location:   " + address;
 	}
 }

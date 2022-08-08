@@ -105,14 +105,6 @@ public class FilmController {
 		  return mv; 
 	  }
 
-	
-//	@RequestMapping(path = "DeleteFilm.do", method = RequestMethod.POST)
-//	public String deleteFilm(Film film, Model model) {
-//		model.addAttribute("filmDelete", fd.deleteFilm(film));
-//		model.addAttribute("deleteMessage", "Film was successfully deleted.");
-//		model.addAttribute("deleteFail", "There was a problem deleting the film.");
-//		return "result";
-//	}
 	@RequestMapping(path = "DeleteFilm.do", method = RequestMethod.POST)
 	public String deleteFilm(Film film, Model model, RedirectAttributes redir) {
 		redir.addFlashAttribute("filmDelete", fd.deleteFilm(film));
