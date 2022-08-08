@@ -31,4 +31,4 @@ This is our first group project. We learned how to use a GitHub repository toget
 ###Jamie:
 
 ###Steph: 
-I learned a lot about the management of a SQL database. This project was great to see the real life aspects of working with a team on GitHub and in Spring MVC. The way merge conflicts work was interesting to see and my team and I had several. This project helped my to conceptualize a dynamic web page as a whole and to gain the experience to feel more comfortable with the concept above like redirect and prepared statements. It also allowed for us to get plenty of hands on experience with HTML and CSS.
+I learned a lot about the management of a SQL database. This project was great to see the real life aspects of working with a team on GitHub and in Spring MVC. The process of clearing merge conflicts was interesting and helpful. This project helped me to conceptualize a dynamic web page as a whole and to gain the experience to feel more comfortable with the concepts above like redirect and prepared statements. It also allowed for us to get plenty of hands on experience with HTML and CSS.
