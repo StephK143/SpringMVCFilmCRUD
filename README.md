@@ -24,4 +24,10 @@ Database extraction with Prepared Statements - Object Oriented Programming - Cla
 
 # Lessons Learned
 
-This is our first group project
+This is our first group project and we all learned a bunch.
+
+###Wyatt: 
+
+###Jamie:
+
+###Steph:

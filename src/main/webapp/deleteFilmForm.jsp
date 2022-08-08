@@ -10,9 +10,9 @@
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
-	<a href="index.html"><img
+	<a href="index.html"><img class="home"
 		src="https://www.kindpng.com/picc/m/111-1110719_blue-home-page-icon-png-website-icon-home.png"
-		align="right" width=5% title="Home Page" /></a>
+		title="Home Page" /></a>
 
 	<br>
 	<h1>Is this the film you want to delete:</h1>
@@ -32,20 +32,20 @@
 					<tr>
 						<td>
 							<ul style="list-style-type: none">
-								<li><span><strong>Description:</strong></span>${film.description}</li>
-								<li><span><strong>Rating:</strong></span> ${film.rating}</li>
-								<li><span><strong>Release Year:</strong></span>${film.releaseYear}</li>
-								<li><span><strong>Language:</strong></span>${film.language}</li>
-								<li><span><strong>Category:</strong></span>${film.category}</li>
-								<li><span><strong>Features:</strong></span>${film.features}</li>
+								<li class="wrap-text"><span>Description:</span>${film.description}</li><br>
+								<li><span>Rating:</span> ${film.rating}</li><br>
+								<li><span>Release Year:</span>${film.releaseYear}</li><br>
+								<li><span>Language:</span>${film.language}</li><br>
+								<li><span>Category:</span>${film.category}</li><br>
+								<li><span>Features:</span>${film.features}</li>
 							</ul>
 						</td>
 						<td>
 							<ul style="list-style-type: none">
-								<li><span><strong>Length:</strong></span> ${film.length}</li>
-								<li><span><strong>Film ID:</strong></span> ${film.filmId}</li>
-								<li><span><strong>Rental Rate:</strong></span>${film.rentalRate}</li>
-								<li><span><strong>Duration:</strong></span>${film.duration}</li>
+								<li><span><strong>Length:</strong></span> ${film.length}</li><br>
+								<li><span><strong>Film ID:</strong></span> ${film.filmId}</li><br>
+								<li><span><strong>Rental Rate:</strong></span>${film.rentalRate}</li><br>
+								<li><span><strong>Duration:</strong></span>${film.duration}</li><br>
 								<li><span><strong>Replacement Cost:</strong></span>${film.replaceCost}</li>
 							</ul>
 						</td>
