@@ -6,7 +6,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Films</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Movie Maven Film Catalog: Films</title>
 <link rel='stylesheet' href='stylesheet.css'>
 </head>
 <body>
@@ -14,9 +15,9 @@
 
 	<c:choose>
 		<c:when test="${! empty film}">
-			<h2>Film Title: ${film.title}</h2>
+			<h2 class="head">Film Title: ${film.title}</h2>
 			<table id="filmDetails">
-				<thead>
+				<thead class="head">
 					<tr>
 						<th>Film Details</th>
 						<th>Rental Details</th>
@@ -27,27 +28,27 @@
 					<tr>
 						<td>
 							<ul style="list-style-type: none">
-								<li><span><strong>Description:</strong></span>
-									${film.description}</li>
-								<li><span><strong>Rating:</strong></span> ${film.rating}</li>
+								<li class="wrap-text"><span><strong>Description:</strong></span>
+									${film.description}</li><br>
+								<li><span><strong>Rating:</strong></span> ${film.rating}</li><br>
 								<li><span><strong>Release Year:</strong></span>
-									${film.releaseYear}</li>
+									${film.releaseYear}</li><br>
 								<li><span><strong>Language:</strong></span>
-									${film.language}</li>
+									${film.language}</li><br>
 								<li><span><strong>Category:</strong></span>
-									${film.category}</li>
+									${film.category}</li><br>
 								<li><span><strong>Features:</strong></span>
 									${film.features}</li>
 							</ul>
 						</td>
 						<td>
 							<ul style="list-style-type: none">
-								<li><span><strong>Length:</strong></span> ${film.length}</li>
-								<li><span><strong>Film ID:</strong></span> ${film.filmId}</li>
+								<li><span><strong>Length:</strong></span> ${film.length}</li><br>
+								<li><span><strong>Film ID:</strong></span> ${film.filmId}</li><br>
 								<li><span><strong>Rental Rate:</strong></span>
-									${film.rentalRate}</li>
+									${film.rentalRate}</li><br>
 								<li><span><strong>Duration:</strong></span>
-									${film.duration} days</li>
+									${film.duration} days</li><br>
 								<li><span><strong>Replacement Cost:</strong></span>
 									${film.replaceCost}</li>
 							</ul>
@@ -57,14 +58,14 @@
 								<ul style="list-style-type: none">
 									<li><strong>${actor.firstName} ${actor.lastName}</strong></li>
 								</ul>
-							</c:forEach> <br>
+							</c:forEach>
 						</td>
-					</tr>
-					<tr>
+					</tr> <br>
+					<tr><br>
 						<td>
 							<form action="EditFilm.do" method="get">
 								<input type="hidden" value=${film.filmId } name="filmId" /> 
-								<input type="submit" value="Edit Film" />
+								<input class="button3" type="submit" value="Edit Film" />
 							</form>
 						</td>
 						<td>
@@ -76,7 +77,7 @@
 						<td>
 							<form action="Inventory.do" method="get">
 								<input type="hidden" value=${film.filmId } name="filmId" /> 
-								<input type="submit" value="Show Me Inventory By Store" />
+								<input class="button4" type="submit" value="Show Me Inventory By Store" />
 							</form>
 						</td>
 					</tr>
@@ -90,7 +91,7 @@
 
 	<c:choose>
 		<c:when test="${not empty filmKeyword}">
-			<h1>Films that match your search:</h1>
+			<h1 class="head" >Films that match your search:</h1>
 			<br>
 			<table class="keywordTable" id="kwTable">
 				<thead>
@@ -107,28 +108,28 @@
 					<c:forEach var="film" items="${filmKeyword}">
 						<tr>
 							<td><strong>${film.title}</strong></td>
-							<td><strong>${film.description}</strong></td>
+							<tdclass="wrap-text"><strong>${film.description}</strong></td>
 							<td><strong>${film.releaseYear}</strong></td>
 							<td><strong>${film.language}</strong></td>
 							<td><strong>${film.rentalRate}</strong></td>
 							<td>
 								<form action="EditFilm.do" method="get">
 									<input type="hidden" value=${film.filmId } name="filmId" /> 
-									<input type="submit" value="Edit Film" />
+									<input class="button3" type="submit" value="Edit Film" />
 								</form>
 
 							</td>
 							<td>
 								<form action="ConfirmDelete.do" method="get">
-									<input type="hidden" value=${film.filmId } name="filmId" /> 
-									<input type="submit" value="Delete Film" />
+									<input class="button3" type="hidden" value=${film.filmId } name="filmId" /> 
+									<input class="danger" type="submit" value="Delete Film" />
 								</form>
 
 							</td>
 							<td>
 								<form action="GetFilm.do" method="get">
-									<input type="hidden" value=${film.filmId } name="filmId" /> 
-									<input type="submit" value="List all film details" />
+									<input  type="hidden" value=${film.filmId } name="filmId" /> 
+									<input class="button3" type="submit" value="List all film details" />
 								</form>
 
 							</td>
@@ -159,17 +160,17 @@
 
 	<c:choose>
 		<c:when test="${! empty actor}">
-			<h2>Actor Added:</h2>
+			<h2 class="head" >Actor Added:</h2>
 			<ul>
 				<li>Actor Name: ${actor.firstName} ${actor.lastName}</li>
 				<li>Actor ID: ${actor.id}</li>
 			</ul>
 			<br>
-			<h2>Films Starring This Actor:</h2>
+			<h2 class="head" >Films Starring This Actor:</h2>
 			${actorSize}
 			<c:forEach var="movie" items="${actorFilms}">
 				<ul style="list-style-type: none">
-					<li><strong>${movie.title} ${movie.description}</strong></li>
+					<li class="wrap-text"><strong>${movie.title} ${movie.description}</strong></li>
 				</ul>
 			</c:forEach>
 			<br>
@@ -192,14 +193,14 @@
 
 	<c:choose>
 		<c:when test="${! empty inventory}">
-		<h2>Copies Available in Store</h2>
-			<table class="inventoryTable" id="invTable">
+		<h2 class="head" >Copies Available in Store</h2>
+			<table id="invTable">
 				<thead>
-					<tr>
-						<th>Title</th>
-						<th>Inventory ID</th>
-						<th>Condition</th>
-						<th>Store Address</th>
+					<tr class ="head">
+						<th >Title</th>
+						<th >Inventory ID</th>
+						<th >Condition</th>
+						<th > Store Address</th>
 					</tr>
 				</thead>
 

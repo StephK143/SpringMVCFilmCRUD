@@ -32,20 +32,20 @@
 					<tr>
 						<td>
 							<ul style="list-style-type: none">
-								<li><span>Description:</span>${film.description}</li>
-								<li><span>Rating:</span> ${film.rating}</li>
-								<li><span>Release Year:</span>${film.releaseYear}</li>
-								<li><span>Language:</span>${film.language}</li>
-								<li><span>Category:</span>${film.category}</li>
+								<li class="wrap-text"><span>Description:</span>${film.description}</li><br>
+								<li><span>Rating:</span> ${film.rating}</li><br>
+								<li><span>Release Year:</span>${film.releaseYear}</li><br>
+								<li><span>Language:</span>${film.language}</li><br>
+								<li><span>Category:</span>${film.category}</li><br>
 								<li><span>Features:</span>${film.features}</li>
 							</ul>
 						</td>
 						<td>
 							<ul style="list-style-type: none">
-								<li><span><strong>Length:</strong></span> ${film.length}</li>
-								<li><span><strong>Film ID:</strong></span> ${film.filmId}</li>
-								<li><span><strong>Rental Rate:</strong></span>${film.rentalRate}</li>
-								<li><span><strong>Duration:</strong></span>${film.duration}</li>
+								<li><span><strong>Length:</strong></span> ${film.length}</li><br>
+								<li><span><strong>Film ID:</strong></span> ${film.filmId}</li><br>
+								<li><span><strong>Rental Rate:</strong></span>${film.rentalRate}</li><br>
+								<li><span><strong>Duration:</strong></span>${film.duration}</li><br>
 								<li><span><strong>Replacement Cost:</strong></span>${film.replaceCost}</li>
 							</ul>
 						</td>
