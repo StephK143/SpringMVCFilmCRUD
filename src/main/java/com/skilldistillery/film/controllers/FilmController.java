@@ -128,7 +128,6 @@ public class FilmController {
 		  return mv;
 	  }
 
-
 	@RequestMapping(path = "Inventory.do", method = RequestMethod.GET)
 	public ModelAndView inventory(@RequestParam("filmId") String filmId) {
 		ModelAndView mv = new ModelAndView();
