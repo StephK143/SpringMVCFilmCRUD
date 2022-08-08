@@ -2,11 +2,11 @@
 
 
 #### TEAM:
- Jamie Patterson
+ * Jamie Patterson
 
- Wyatt Connell
+ * Wyatt Connell
 
- Steph Karlsen
+ * Steph Karlsen
 
 
 # Skill Distillery - Week 8: MVC Film Site
@@ -32,6 +32,7 @@ Request Mapping - Database extraction with Prepared Statements - Prepared Statem
 This is our first group project using a GitHub repository. Our team ran into merge conflicts a couple of times and we were able to quickly work through them to make sure everyone had the most current version.
 
 ### Wyatt:
+This project was a great way to see how pair programming works when trying to create a viable product. It was essential that we work together to manage our platform, especially when it came to troubleshooting the variety of issues that came about over the course of this project. I now feel that I have a better understanding of how the front end and back end fit together. The connection between the two is very complicated, and I am hungry to further practice my skills and solidify them. Overall, I learned that working together can be a rewarding experience in itself, and I am glad that our first real project was a success!
 
 ### Jamie:
 This project helped solidify my understanding of web forms, request mapping, MVC frameworks, data accessor objects and interfaces, and rendering results to a user using JSP expression language. Converting a standard java application into a dynamic web application was much more seamless than I had originally imagined, with many overlapping elements. Request mapping and passing hidden values to the controller streamlined the development process and made the application more user-friendly. The concept of PRG finally clicked when I could see it in action on our own program.
